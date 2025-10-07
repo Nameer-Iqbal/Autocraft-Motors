@@ -1,279 +1,204 @@
-import { useState } from "react";
+// src/pages/Contact.tsx
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Calendar, Car } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Visit Our Showroom",
-    details: "123 Luxury Drive, Auto City, AC 12345",
-    description: "Our state-of-the-art showroom features the latest models"
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    details: "(555) 123-4567",
-    description: "Speak with our automotive experts"
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    details: "info@elitemotors.com",
-    description: "Get detailed information about any vehicle"
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    details: "Mon-Sat: 9AM-8PM, Sun: 11AM-6PM",
-    description: "Extended hours for your convenience"
-  }
-];
-
-const quickActions = [
-  {
-    icon: Calendar,
-    title: "Schedule Test Drive",
-    description: "Book a test drive for any vehicle in our inventory"
-  },
-  {
-    icon: Car,
-    title: "Vehicle Appraisal",
-    description: "Get an instant quote for your trade-in vehicle"
-  },
-  {
-    icon: MessageSquare,
-    title: "Get Quote",
-    description: "Receive personalized pricing and financing options"
-  }
-];
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Navigation,
+  PhoneCall,
+  AtSign,
+} from "lucide-react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  });
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate form submission
-    toast({
-      title: "Message Sent Successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: ""
-    });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
-    <div className="min-h-screen py-16">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-4">
-            Contact Us
-          </Badge>
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Get in <span className="bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">Touch</span>
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900">
+            Get in Touch<span className="text-emerald-600"></span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to find your perfect vehicle? Our team of automotive experts is here to help you every step of the way.
+          <p className="mt-4 text-xl text-gray-600">
+            Ready to find your perfect vehicle? Our team is here to help at
+            every step.
           </p>
         </div>
 
-        {/* Contact Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {contactInfo.map((info, index) => (
-            <Card key={index} className="card-gradient shadow-card border-border text-center">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <info.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {info.title}
-                </h3>
-                <p className="text-primary font-medium mb-2">
-                  {info.details}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {info.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Info cards */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <InfoCard
+            icon={<MapPin className="h-6 w-6 text-emerald-600" />}
+            title="Visit Our Showroom"
+            primary="123 Luxury Drive, Auto City, AC 12345"
+            secondary="Our state-of-the-art showroom features the latest models."
+          />
+          <InfoCard
+            icon={<Phone className="h-6 w-6 text-emerald-600" />}
+            title="Call Us"
+            primary="(555) 123-4567"
+            secondary="Speak directly with our automotive experts."
+          />
+          <InfoCard
+            icon={<Mail className="h-6 w-6 text-emerald-600" />}
+            title="Email Us"
+            primary="info@elitemotors.com"
+            secondary="Get detailed info about any vehicle."
+          />
+          <InfoCard
+            icon={<Clock className="h-6 w-6 text-emerald-600" />}
+            title="Business Hours"
+            primary="Mon–Sat: 9AM–8PM, Sun: 11AM–6PM"
+            secondary="Extended hours for your convenience."
+          />
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="card-gradient shadow-card border-border">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground">Send us a Message</CardTitle>
-                <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                        Subject *
-                      </label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        type="text"
-                        required
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="How can we help you?"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your automotive needs..."
-                    />
-                  </div>
-                  
-                  <Button type="submit" size="lg" className="w-full gold-gradient shadow-gold">
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+        {/* Form + Quick actions */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Form */}
+          <Card className="lg:col-span-2 rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <CardContent className="p-6 lg:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Send us a Message
+              </h2>
 
-          {/* Quick Actions & Map */}
-          <div className="space-y-8">
-            {/* Quick Actions */}
-            <Card className="card-gradient shadow-card border-border">
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {quickActions.map((action, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <action.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground mb-1">
-                        {action.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {action.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  placeholder="Full name"
+                  className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
+                             focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
+                />
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
+                             focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
+                />
+                <Input
+                  placeholder="Phone (optional)"
+                  className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
+                             focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
+                />
+                <Input
+                  placeholder="Subject"
+                  className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
+                             focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
+                />
 
-            {/* Map Placeholder */}
-            <Card className="card-gradient shadow-card border-border">
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground">Find Us</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <p className="text-muted-foreground">Interactive Map</p>
-                    <p className="text-sm text-muted-foreground">
-                      123 Luxury Drive<br />
-                      Auto City, AC 12345
-                    </p>
-                  </div>
+                <div className="md:col-span-2">
+                  <Textarea
+                    rows={6}
+                    placeholder="Your message…"
+                    className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
+                               focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
+                  />
                 </div>
-                <Button variant="outline" className="w-full mt-4">
-                  Get Directions
+
+                <div className="md:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
+                  <Button className="bg-emerald-600 text-white hover:bg-emerald-700">
+                    Send Message
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Quick actions */}
+          <Card className="rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <CardContent className="p-6 lg:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Quick Actions
+              </h2>
+              <div className="space-y-3">
+                <Button
+                  className="w-full bg-black text-white hover:bg-emerald-600"
+                  asChild
+                >
+                  <a href="tel:+15551234567">
+                    Call Now
+                    <PhoneCall className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
-              </CardContent>
-            </Card>
+                <Button
+                  className="w-full bg-emerald-600 text-white hover:bg-emerald-700"
+                  asChild
+                >
+                  <a
+                    href="https://maps.google.com/?q=123+Luxury+Drive,+Auto+City,+AC+12345"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Get Directions
+                    <Navigation className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full bg-white text-emerald-600 border-emerald-600 hover:bg-emerald-600 hover:text-white"
+                  asChild
+                >
+                  <a href="mailto:info@elitemotors.com">
+                    Email Us
+                    <Mail className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+
+              <p className="mt-6 text-sm text-gray-600">
+                Prefer to chat later? Send your message and our team will reach
+                out within one business day.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Optional map (static placeholder) */}
+        <div className="mt-12">
+          <div className="rounded-2xl overflow-hidden border border-gray-200">
+            {/* Replace with your map embed if you like */}
+            <iframe
+              title="Showroom Location"
+              className="w-full h-72"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537363153169!3d-37.81627974201266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAwLjYiUyAxNDTCsDU3JzE1LjQiRQ!5e0!3m2!1sen!2sus!4v1700000000000"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </section>
+  );
+}
+
+/* ---------- helpers ---------- */
+
+function InfoCard({
+  icon,
+  title,
+  primary,
+  secondary,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  primary: string;
+  secondary: string;
+}) {
+  return (
+    <Card className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-shadow">
+      <CardContent className="p-6 text-center">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50">
+          {icon}
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <p className="mt-2 text-sm font-medium text-gray-900">{primary}</p>
+        <p className="mt-1 text-sm text-gray-600">{secondary}</p>
+      </CardContent>
+    </Card>
   );
 }
