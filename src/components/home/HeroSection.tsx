@@ -30,8 +30,7 @@ export default function HeroSection() {
 
               {/* Heading: white + green accent */}
               <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight text-white">
-                Discover Your
-                <span className="block text-emerald-500">Dream Car</span>
+                <span className="block text-emerald-500">Greenway Motors</span>
               </h1>
 
               {/* Subhead: light gray for readability on dark */}

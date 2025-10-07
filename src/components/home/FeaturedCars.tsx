@@ -17,7 +17,7 @@ export default function FeaturedCars() {
             Featured Collection
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Premium Vehicles
+            Coming Soon
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Explore our handpicked selection of luxury vehicles, each representing the pinnacle of automotive engineering and design.

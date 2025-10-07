@@ -37,7 +37,7 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Greenway Motors" className="h-9 w-auto object-contain" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">Elite Motors</span>
+                <span className="text-lg font-bold text-white">Greenway Motors</span>
                 <span className="text-xs text-white/60">Premium Car Showroom</span>
               </div>
             </Link>
@@ -138,7 +138,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-white/60">
-              © {new Date().getFullYear()} Elite Motors. All rights reserved.
+              © {new Date().getFullYear()} Greenway Motors. All rights reserved.
             </p>
             <div className="flex gap-6 mt-4 sm:mt-0">
               <Link to="#" className="text-sm text-white/70 hover:text-emerald-400 transition-colors">
