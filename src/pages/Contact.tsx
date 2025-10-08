@@ -14,6 +14,7 @@ import {
   PhoneCall,
   AtSign,
 } from "lucide-react";
+import type { ReactNode } from "react";
 
 export default function Contact() {
   return (
@@ -117,15 +118,6 @@ export default function Contact() {
               </h2>
               <div className="space-y-3">
                 <Button
-                  className="w-full bg-black text-white hover:bg-emerald-600"
-                  asChild
-                >
-                  <a href="tel:+15551234567">
-                    Call Now
-                    <PhoneCall className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-                <Button
                   className="w-full bg-emerald-600 text-white hover:bg-emerald-700"
                   asChild
                 >
@@ -184,7 +176,7 @@ function InfoCard({
   primary,
   secondary,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   primary: string;
   secondary: string;

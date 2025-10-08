@@ -1,11 +1,11 @@
 import HeroSection from "@/components/home/HeroSection";
-import FeaturedCars from "@/components/home/FeaturedCars";
+import ComingSoon from "@/components/home/ComingSoon";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <FeaturedCars />
+      <ComingSoon />
     </>
   );
 }
