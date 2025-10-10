@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 // 1) ⬇️ Import your logo here
 import logo from "@/assets/elite-motors-logo.jpg"; // <- change to your file
@@ -18,6 +19,7 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur">
@@ -27,10 +29,10 @@ export default function Header() {
           <Link to="/" className="-m-1.5 p-1.5  flex items-center gap-3">
             {/* 2) ⬇️ Use your logo instead of the Car icon */}
             <img
-            src={logo}
-            alt="Greenway Motors"
-            className="h-12 w-auto object-contain"
-            style={{ maxHeight: "48px" }}
+              src={logo}
+              alt="Greenway Motors"
+              className="h-12 w-auto object-contain"
+              style={{ maxHeight: "48px" }}
             />
           </Link>
         </div>
@@ -69,12 +71,35 @@ export default function Header() {
 
         {/* RIGHT: Auth buttons */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3">
-          <Button className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors">
-            Login
-          </Button>
-          <Button className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
-            Sign Up
-          </Button>
+          {isAuthenticated ? (
+            <div className="flex items-center gap-3">
+              <span className="text-white text-sm">
+                Welcome, {user?.firstName || user?.email}
+              </span>
+              <Button
+                onClick={logout}
+                className="bg-red-600 text-white hover:bg-red-700 transition-colors"
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Button
+                asChild
+                className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors"
+              >
+                <Link to="/login">Sign In</Link>
+              </Button>
+              <Button
+                asChild
+                className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors"
+              >
+                <Link to="/signup">Sign Up</Link>
+              </Button>
+            </>
+          )}
         </div>
       </nav>
 
@@ -83,8 +108,16 @@ export default function Header() {
         <div className="lg:hidden fixed inset-0 z-50">
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black/95 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
             <div className="flex items-center justify-between">
-              <Link to="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
-                <img src={logo} alt="Greenway Motors" className="h-8 w-auto object-contain" />
+              <Link
+                to="/"
+                className="-m-1.5 p-1.5 flex items-center gap-3"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <img
+                  src={logo}
+                  alt="Greenway Motors"
+                  className="h-8 w-auto object-contain"
+                />
               </Link>
               <Button
                 variant="ghost"
@@ -114,13 +147,43 @@ export default function Header() {
                 ))}
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <Button className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white">
-                  Login
-                </Button>
-                <Button className="bg-emerald-600 text-white hover:bg-emerald-700">
-                  Sign Up
-                </Button>
+              <div className="mt-6">
+                {isAuthenticated ? (
+                  <div className="space-y-3">
+                    <div className="text-center">
+                      <span className="text-white text-sm">
+                        Welcome, {user?.firstName || user?.email}
+                      </span>
+                    </div>
+                    <Button
+                      onClick={() => {
+                        logout();
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full bg-red-600 text-white hover:bg-red-700"
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Logout
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button
+                      asChild
+                      className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Link to="/login">Sign In</Link>
+                    </Button>
+                    <Button
+                      asChild
+                      className="bg-emerald-600 text-white hover:bg-emerald-700"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Link to="/signup">Sign Up</Link>
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
