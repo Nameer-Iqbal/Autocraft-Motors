@@ -35,9 +35,9 @@ export default function HeroSection() {
 
               {/* Subhead: light gray for readability on dark */}
               <p className="text-xl text-white/80 max-w-2xl leading-relaxed">
-                Experience luxury redefined with our curated collection of premium
-                vehicles. From high-performance sports cars to elegant sedans,
-                find your perfect match.
+                Experience luxury redefined with our curated collection of
+                premium vehicles. From high-performance sports cars to elegant
+                sedans, find your perfect match.
               </p>
             </div>
 

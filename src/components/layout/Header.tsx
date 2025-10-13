@@ -74,11 +74,11 @@ export default function Header() {
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
               <span className="text-white text-sm">
-                Welcome, {user?.firstName || user?.email}
+                {/* Welcome, {user?.firstName || user?.email} */}
               </span>
               <Button
                 onClick={logout}
-                className="bg-red-600 text-white hover:bg-red-700 transition-colors"
+                className="bg-red-600 text-white hover:bg-red-700 transition-colors h-8 px-3 text-sm"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout
@@ -88,13 +88,13 @@ export default function Header() {
             <>
               <Button
                 asChild
-                className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors"
+                className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors h-8 px-3 text-sm"
               >
                 <Link to="/login">Sign In</Link>
               </Button>
               <Button
                 asChild
-                className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors"
+                className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors h-8 px-3 text-sm"
               >
                 <Link to="/signup">Sign Up</Link>
               </Button>
@@ -160,7 +160,7 @@ export default function Header() {
                         logout();
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full bg-red-600 text-white hover:bg-red-700"
+                      className="w-full bg-red-600 text-white hover:bg-red-700 h-8 text-sm"
                     >
                       <LogOut className="mr-2 h-4 w-4" />
                       Logout
@@ -170,14 +170,14 @@ export default function Header() {
                   <div className="grid grid-cols-2 gap-3">
                     <Button
                       asChild
-                      className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white"
+                      className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white h-8 text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <Link to="/login">Sign In</Link>
                     </Button>
                     <Button
                       asChild
-                      className="bg-emerald-600 text-white hover:bg-emerald-700"
+                      className="bg-emerald-600 text-white hover:bg-emerald-700 h-8 text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <Link to="/signup">Sign Up</Link>

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getFeaturedCars } from "@/data/cars";
-import { ArrowRight, Fuel, Gauge, Calendar, Cog } from "lucide-react";
+import { ArrowRight, Fuel, Calendar, Cog, Car } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function FeaturedCars() {
@@ -13,7 +13,7 @@ export default function FeaturedCars() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6">
             Coming Soon
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -36,13 +36,8 @@ export default function FeaturedCars() {
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute top-4 left-4">
-                  <Badge className="rounded-full bg-emerald-600 text-white px-3 py-1 text-xs font-semibold">
-                    Featured
-                  </Badge>
-                </div>
                 <div className="absolute top-4 right-4">
                   <Badge className="rounded-full bg-white/90 text-gray-800 border border-gray-200 px-3 py-1 text-xs">
                     {car.year}
@@ -51,7 +46,7 @@ export default function FeaturedCars() {
               </div>
 
               {/* Content */}
-              <CardContent className="p-6">
+              <CardContent className="p-5">
                 {/* Title */}
                 <h3 className="text-lg font-semibold text-gray-900">
                   {car.year} {car.name}
@@ -71,8 +66,8 @@ export default function FeaturedCars() {
                     <span>{car.transmission}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
-                    <Gauge className="h-4 w-4 text-emerald-600" />
-                    <span>{car.mileage}</span>
+                    <Car className="h-4 w-4 text-emerald-600" />
+                    <span>{car.driveType}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
                     <Calendar className="h-4 w-4 text-emerald-600" />
@@ -82,7 +77,7 @@ export default function FeaturedCars() {
 
                 {/* Price + CTA */}
                 <div className="mt-5 pt-5 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-2xl font-bold text-emerald-600">
+                  <span className="text-xl font-bold text-emerald-600">
                     ${car.price.toLocaleString()}
                   </span>
 

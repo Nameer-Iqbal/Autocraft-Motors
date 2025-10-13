@@ -11,13 +11,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cars } from "@/data/cars";
-import { Search, Filter, Fuel, Gauge, Calendar, Cog, ArrowRight } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Fuel,
+  Calendar,
+  Cog,
+  ArrowRight,
+  Car,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Inventory() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [filterBrand, setFilterBrand] = useState("all");
   const [filterType, setFilterType] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const carsPerPage = 6;
 
   const brands = Array.from(new Set(cars.map((car) => car.brand)));
   const types = Array.from(new Set(cars.map((car) => car.type)));
@@ -55,6 +67,17 @@ export default function Inventory() {
     return filtered;
   }, [searchTerm, sortBy, filterBrand, filterType]);
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredAndSortedCars.length / carsPerPage);
+  const startIndex = (currentPage - 1) * carsPerPage;
+  const endIndex = startIndex + carsPerPage;
+  const currentCars = filteredAndSortedCars.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  useMemo(() => {
+    setCurrentPage(1);
+  }, [searchTerm, sortBy, filterBrand, filterType]);
+
   return (
     <div className="min-h-screen py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -64,8 +87,8 @@ export default function Inventory() {
             Our Inventory <span className="text-emerald-600"></span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover our complete collection of premium vehicles. Each car is carefully
-            inspected and certified to meet our highest standards.
+            Discover our complete collection of premium vehicles. Each car is
+            carefully inspected and certified to meet our highest standards.
           </p>
         </div>
 
@@ -134,13 +157,15 @@ export default function Inventory() {
         {/* Results Count */}
         <div className="mb-8">
           <p className="text-gray-500">
-            Showing {filteredAndSortedCars.length} of {cars.length} vehicles
+            Showing {startIndex + 1}-
+            {Math.min(endIndex, filteredAndSortedCars.length)} of{" "}
+            {filteredAndSortedCars.length} vehicles
           </p>
         </div>
 
         {/* Cars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredAndSortedCars.map((car) => (
+          {currentCars.map((car) => (
             <Card
               key={car.id}
               className="group rounded-2xl border border-gray-200 bg-white shadow-sm
@@ -152,7 +177,7 @@ export default function Inventory() {
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
 
                 {/* Year (neutral, no hover color) */}
@@ -161,20 +186,13 @@ export default function Inventory() {
                     {car.year}
                   </Badge>
                 </div>
-
-                {/* Featured (emerald, no hover color) */}
-                {car.featured && (
-                  <div className="absolute top-4 right-4">
-                    <Badge className="rounded-full bg-emerald-600 text-white px-3 py-1 text-xs font-semibold cursor-default pointer-events-none">
-                      Featured
-                    </Badge>
-                  </div>
-                )}
               </div>
 
               {/* Content */}
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900">{car.name}</h3>
+              <CardContent className="p-5">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {car.name}
+                </h3>
                 <p className="text-sm text-gray-500">
                   {car.brand} {car.model}
                 </p>
@@ -190,8 +208,8 @@ export default function Inventory() {
                     <span>{car.transmission}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
-                    <Gauge className="h-4 w-4 text-emerald-600" />
-                    <span>{car.mileage}</span>
+                    <Car className="h-4 w-4 text-emerald-600" />
+                    <span>{car.driveType}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
                     <Calendar className="h-4 w-4 text-emerald-600" />
@@ -199,26 +217,9 @@ export default function Inventory() {
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="mt-4">
-                  <p className="text-sm font-medium text-gray-900">Key Features:</p>
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {car.features.slice(0, 3).map((feature, i) => (
-                      <Badge key={i} variant="secondary" className="text-xs bg-gray-100 text-gray-700 hover:bg-gray-100">
-                        {feature}
-                      </Badge>
-                    ))}
-                    {car.features.length > 3 && (
-                      <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-700 hover:bg-gray-100">
-                        +{car.features.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-
                 {/* Price + CTA */}
                 <div className="mt-5 pt-5 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-2xl font-bold text-emerald-600">
+                  <span className="text-xl font-bold text-emerald-600">
                     ${car.price.toLocaleString()}
                   </span>
                   <Button
@@ -234,12 +235,64 @@ export default function Inventory() {
           ))}
         </div>
 
-        {filteredAndSortedCars.length === 0 && (
+        {filteredAndSortedCars.length === 0 ? (
           <div className="text-center py-16">
             <Filter className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No vehicles found</h3>
-            <p className="text-gray-600">Try adjusting your search criteria or filters.</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              No vehicles found
+            </h3>
+            <p className="text-gray-600">
+              Try adjusting your search criteria or filters.
+            </p>
           </div>
+        ) : (
+          <>
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="mt-12 flex items-center justify-center gap-4">
+                <Button
+                  variant="outline"
+                  onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                  disabled={currentPage === 1}
+                  className="flex items-center gap-1 h-8 px-3 text-sm"
+                >
+                  <ChevronLeft className="h-3 w-3" />
+                  Previous
+                </Button>
+
+                <div className="flex items-center gap-2">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <Button
+                        key={page}
+                        variant="outline"
+                        onClick={() => setCurrentPage(page)}
+                        className={`h-8 w-8 text-sm border-gray-300 ${
+                          currentPage === page
+                            ? "bg-black text-white"
+                            : "bg-emerald-600 text-white"
+                        }`}
+                      >
+                        {page}
+                      </Button>
+                    )
+                  )}
+                </div>
+
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    setCurrentPage(Math.min(totalPages, currentPage + 1))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="flex items-center gap-1 h-8 px-3 text-sm"
+                >
+                  Next
+                  <ChevronRight className="h-3 w-3" />
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

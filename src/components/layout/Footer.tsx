@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 // ⬇️ import your logo (same file you used in the header)
 import logo from "@/assets/elite-motors-logo.jpg";
@@ -35,16 +43,25 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Greenway Motors" className="h-9 w-auto object-contain" />
+              <img
+                src={logo}
+                alt="Greenway Motors"
+                className="h-9 w-auto object-contain"
+              />
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">Greenway Motors</span>
-                <span className="text-xs text-white/60">Premium Car Showroom</span>
+                <span className="text-lg font-bold text-white">
+                  Greenway Motors
+                </span>
+                <span className="text-xs text-white/60">
+                  Premium Car Showroom
+                </span>
               </div>
             </Link>
 
             <p className="text-sm text-white/70 mb-6">
-              Your trusted partner in finding the perfect luxury vehicle. We offer the finest
-              selection of premium cars with exceptional service.
+              Your trusted partner in finding the perfect luxury vehicle. We
+              offer the finest selection of premium cars with exceptional
+              service.
             </p>
 
             <div className="space-y-2 text-sm text-white/70">
@@ -65,7 +82,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">
+              Quick Links
+            </h3>
             <ul className="space-y-3">
               {navigation.main.map((item) => (
                 <li key={item.name}>
@@ -82,7 +101,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Our Services</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">
+              Our Services
+            </h3>
             <ul className="space-y-3">
               {navigation.services.map((item) => (
                 <li key={item.name}>
@@ -99,9 +120,12 @@ export default function Footer() {
 
           {/* Newsletter + Social */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Stay Connected</h3>
+            <h3 className="text-sm font-semibold text-white mb-4">
+              Stay Connected
+            </h3>
             <p className="text-sm text-white/70 mb-4">
-              Subscribe to our newsletter for the latest updates on new arrivals and exclusive offers.
+              Subscribe to our newsletter for the latest updates on new arrivals
+              and exclusive offers.
             </p>
 
             <div className="flex gap-2 mb-6">
@@ -141,10 +165,16 @@ export default function Footer() {
               © {new Date().getFullYear()} Greenway Motors. All rights reserved.
             </p>
             <div className="flex gap-6 mt-4 sm:mt-0">
-              <Link to="#" className="text-sm text-white/70 hover:text-emerald-400 transition-colors">
+              <Link
+                to="#"
+                className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link to="#" className="text-sm text-white/70 hover:text-emerald-400 transition-colors">
+              <Link
+                to="#"
+                className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
+              >
                 Terms of Service
               </Link>
             </div>

@@ -4,7 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Eye, EyeOff, Mail, Lock, User, Loader2 } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Loader2,
+  ArrowLeft,
+} from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
 import heroShowroom from "@/assets/hero-showroom.jpg";
@@ -118,6 +126,19 @@ export default function Signup() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {/* Back Button */}
+      <div className="absolute top-8 left-8 z-10">
+        <Button
+          asChild
+          size="sm"
+          className="gap-2 bg-emerald-600 text-white hover:bg-emerald-700"
+        >
+          <Link to="/">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+      </div>
       {/* Blurred background overlay */}
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
 

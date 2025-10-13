@@ -9,7 +9,7 @@ export interface Car {
   type: string;
   fuelType: string;
   transmission: string;
-  mileage: string;
+  driveType: string;
   features: string[];
   featured: boolean;
 }
@@ -26,7 +26,7 @@ export const cars: Car[] = [
     type: "Coupe",
     fuelType: "Gasoline",
     transmission: "Automatic",
-    mileage: "16/23 mpg",
+    driveType: "LHD",
     features: ["Carbon Fiber Roof", "M Driver's Package", "Harman Kardon Audio", "Adaptive Suspension"],
     featured: true
   },
@@ -41,7 +41,7 @@ export const cars: Car[] = [
     type: "Sedan",
     fuelType: "Hybrid",
     transmission: "Automatic",
-    mileage: "23/28 mpg",
+    driveType: "LHD",
     features: ["Massaging Seats", "Air Suspension", "Burmester Audio", "Night Vision"],
     featured: true
   },
@@ -56,7 +56,7 @@ export const cars: Car[] = [
     type: "Wagon",
     fuelType: "Gasoline",
     transmission: "Automatic",
-    mileage: "17/24 mpg",
+    driveType: "LHD",
     features: ["Quattro AWD", "Sport Exhaust", "Virtual Cockpit", "Dynamic Package"],
     featured: true
   },
@@ -71,7 +71,7 @@ export const cars: Car[] = [
     type: "Coupe",
     fuelType: "Gasoline",
     transmission: "PDK",
-    mileage: "18/24 mpg",
+    driveType: "LHD",
     features: ["Turbo Engine", "PDK Transmission", "Sport Chrono", "Ceramic Brakes"],
     featured: false
   },
@@ -86,7 +86,7 @@ export const cars: Car[] = [
     type: "SUV",
     fuelType: "Gasoline",
     transmission: "Automatic",
-    mileage: "20/25 mpg",
+    driveType: "LHD",
     features: ["3rd Row Seating", "Panoramic Roof", "Adaptive Cruise", "Parking Assistant"],
     featured: false
   },
@@ -101,7 +101,7 @@ export const cars: Car[] = [
     type: "Coupe",
     fuelType: "Gasoline",
     transmission: "AMG Speedshift",
-    mileage: "15/22 mpg",
+    driveType: "LHD",
     features: ["AMG Performance", "Race Mode", "Carbon Fiber", "Track Package"],
     featured: false
   },
@@ -116,7 +116,7 @@ export const cars: Car[] = [
     type: "Sedan",
     fuelType: "Electric",
     transmission: "Single Speed",
-    mileage: "238 miles range",
+    driveType: "LHD",
     features: ["Ultra-Fast Charging", "Air Suspension", "Virtual Mirrors", "Regenerative Braking"],
     featured: false
   },
@@ -131,7 +131,7 @@ export const cars: Car[] = [
     type: "Coupe",
     fuelType: "Gasoline",
     transmission: "Dual-Clutch",
-    mileage: "13/18 mpg",
+    driveType: "LHD",
     features: ["V10 Engine", "All-Wheel Drive", "Carbon Fiber", "Performance Trac"],
     featured: false
   }
