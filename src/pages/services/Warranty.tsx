@@ -205,9 +205,9 @@ export default function Warranty() {
                 >
                   <Link to="/contact">Get Protection Quote</Link>
                 </Button>
-                <Button asChild variant="outline" className="w-full">
+                {/* <Button asChild variant="outline" className="w-full">
                   <Link to="/contact">Learn More</Link>
-                </Button>
+                </Button> */}
               </div>
             </CardContent>
           </Card>
