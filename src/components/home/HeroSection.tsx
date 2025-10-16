@@ -35,9 +35,12 @@ export default function HeroSection() {
 
               {/* Subhead: light gray for readability on dark */}
               <p className="text-xl text-white/80 max-w-2xl leading-relaxed">
-                Experience luxury redefined with our curated collection of
-                premium vehicles. From high-performance sports cars to elegant
-                sedans, find your perfect match.
+                At Greenway Motors, we specialize in exporting premium vehicles
+                from Japan and the UAE to markets across Africa. With
+                transparent pricing, a wide selection, and trusted global
+                logistics, we ensure every customer enjoys a seamless and
+                satisfying car-buying experience — wherever they are in the
+                world.
               </p>
             </div>
 
@@ -45,22 +48,22 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 asChild
-                size="lg"
+                size="default"
                 className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-lg"
               >
                 <Link to="/inventory" className="flex items-center gap-2">
                   <span>View Inventory</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
 
               <Button
                 asChild
                 variant="outline"
-                size="lg"
+                size="default"
                 className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors shadow-lg"
               >
-                <Link to="/contact">Schedule Test Drive</Link>
+                <Link to="/about">About Us</Link>
               </Button>
             </div>
 
@@ -69,21 +72,21 @@ export default function HeroSection() {
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start gap-2">
                   <Star className="h-5 w-5 text-emerald-500" />
-                  <span className="text-2xl font-bold text-white">4.9</span>
+                  <span className="text-2xl font-bold text-white">4.6</span>
                 </div>
                 <p className="text-sm text-white/70">Customer Rating</p>
               </div>
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start gap-2">
                   <Users className="h-5 w-5 text-emerald-500" />
-                  <span className="text-2xl font-bold text-white">10K+</span>
+                  <span className="text-2xl font-bold text-white">3,500+</span>
                 </div>
                 <p className="text-sm text-white/70">Happy Customers</p>
               </div>
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start gap-2">
                   <Award className="h-5 w-5 text-emerald-500" />
-                  <span className="text-2xl font-bold text-white">25+</span>
+                  <span className="text-2xl font-bold text-white">20+</span>
                 </div>
                 <p className="text-sm text-white/70">Years Experience</p>
               </div>

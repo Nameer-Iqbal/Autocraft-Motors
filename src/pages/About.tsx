@@ -12,7 +12,7 @@ export default function About() {
             About Greenway Motors<span className="text-emerald-600"></span>
           </h1>
           <p className="mt-4 text-xl text-gray-600">
-            For over 25 years, Greenway Motors has been the premier destination
+            For over 20 years, Greenway Motors has been the premier destination
             for luxury and premium vehicles—setting the standard for excellence
             in automotive sales and service.
           </p>
@@ -22,22 +22,22 @@ export default function About() {
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           <Stat
             icon={<CalendarDays className="h-6 w-6 text-emerald-600" />}
-            value="25+"
+            value="20+"
             label="Years in Business"
           />
           <Stat
             icon={<Trophy className="h-6 w-6 text-emerald-600" />}
-            value="10,000+"
+            value="5,500+"
             label="Vehicles Sold"
           />
           <Stat
             icon={<Heart className="h-6 w-6 text-emerald-600" />}
-            value="8,500+"
+            value="3,500+"
             label="Happy Customers"
           />
           <Stat
             icon={<Star className="h-6 w-6 text-emerald-600" />}
-            value="4.9/5"
+            value="4.6/5"
             label="Customer Rating"
           />
         </div>
@@ -50,11 +50,18 @@ export default function About() {
                 Our Story
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Elite Motors was founded in 1999 with a simple mission: deliver
-                an exceptional car-buying experience that blends luxury,
-                quality, and trust. What began as a family business has grown
-                into one of the region’s most respected premium
-                dealerships—powered by a team that cares about every detail.
+                Established in 2005, Greenway Motors set out with a clear vision
+                — to redefine the car-buying experience through luxury, quality,
+                and trust. What started as a family initiative has evolved into
+                a globally recognized dealership with operations across Japan,
+                Pakistan, Africa, and the UAE.
+                <br />
+                <br />
+                Specializing in the export of premium vehicles, we take pride in
+                connecting customers worldwide with the finest automobiles.
+                Guided by integrity, reliability, and customer satisfaction,
+                Greenway Motors continues to drive excellence in the global
+                automotive market.
               </p>
             </CardContent>
           </Card>
@@ -65,10 +72,12 @@ export default function About() {
                 Our Mission
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                We aim to provide an unparalleled automotive experience through
-                transparent pricing, expertly curated vehicles, and long-term
-                relationships. From the first test drive to scheduled
-                maintenance, we’re committed to your peace of mind.
+                At Greenway Motors, our mission is to make premium vehicles
+                accessible through transparent and competitive pricing while
+                ensuring seamless global exports. We strive to build lasting
+                relationships with our customers by delivering unmatched
+                reliability, exceptional service, and complete satisfaction at
+                every step — from selection to shipment and beyond.
               </p>
             </CardContent>
           </Card>

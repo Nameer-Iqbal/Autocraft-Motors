@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Phone,
@@ -11,6 +10,18 @@ import {
 import { Button } from "@/components/ui/button";
 // ⬇️ import your logo (same file you used in the header)
 import logo from "@/assets/elite-motors-logo.jpg";
+
+// TikTok icon component
+const TikTok = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>
+);
 
 const navigation = {
   main: [
@@ -28,10 +39,26 @@ const navigation = {
     { name: "Test Drives", href: "/services" },
   ],
   social: [
-    { name: "Facebook", href: "#", icon: Facebook },
-    { name: "Instagram", href: "#", icon: Instagram },
-    { name: "Twitter", href: "#", icon: Twitter },
-    { name: "LinkedIn", href: "#", icon: Linkedin },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61580597323614",
+      icon: Facebook,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/greenwaymotors.ae/",
+      icon: Instagram,
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@greenwaymotors?is_from_webapp=1&sender_device=pc",
+      icon: TikTok,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/greenway-motors-fze/posts/?feedView=all",
+      icon: Linkedin,
+    },
   ],
 };
 
@@ -39,7 +66,7 @@ export default function Footer() {
   return (
     <footer className="bg-black/90 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
@@ -52,40 +79,36 @@ export default function Footer() {
                 <span className="text-lg font-bold text-white">
                   Greenway Motors
                 </span>
-                <span className="text-xs text-white/60">
-                  Premium Car Showroom
-                </span>
+                <span className="text-xs text-white/60">Beyond Borders</span>
               </div>
             </Link>
 
-            <p className="text-sm text-white/70 mb-6">
-              Your trusted partner in finding the perfect luxury vehicle. We
-              offer the finest selection of premium cars with exceptional
-              service.
-            </p>
-
             <div className="space-y-2 text-sm text-white/70">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-emerald-500" />
-                <span>123 Luxury Drive, Auto City, AC 12345</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                <div className="leading-tight">
+                  <div>Ras Al Khor Industrial Area 3</div>
+                  <div>Ducumz Show Room No 94</div>
+                  <div>Dubai, United Arab Emirates</div>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-emerald-500" />
-                <span>(555) 123-4567</span>
+                <span>+971 52 482 5533</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-emerald-500" />
-                <span>info@elitemotors.com</span>
+                <span>sales@greenwaymotors.ae</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">
+          <div className="ml-12">
+            <h3 className="text-sm font-semibold text-white mb-2">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1.5">
               {navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
@@ -101,18 +124,13 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">
+            <h3 className="text-sm font-semibold text-white mb-2">
               Our Services
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1.5">
               {navigation.services.map((item) => (
                 <li key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
+                  <span className="text-sm text-white/70">{item.name}</span>
                 </li>
               ))}
             </ul>
@@ -120,15 +138,15 @@ export default function Footer() {
 
           {/* Newsletter + Social */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">
+            <h3 className="text-sm font-semibold text-white mb-2">
               Stay Connected
             </h3>
-            <p className="text-sm text-white/70 mb-4">
+            <p className="text-sm text-white/70 mb-3">
               Subscribe to our newsletter for the latest updates on new arrivals
               and exclusive offers.
             </p>
 
-            <div className="flex gap-2 mb-6">
+            <div className="flex gap-2 mb-3">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -162,7 +180,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-white/60">
-              © {new Date().getFullYear()} Greenway Motors. All rights reserved.
+              © 2005 Greenway Motors. All rights reserved.
             </p>
             <div className="flex gap-6 mt-4 sm:mt-0">
               <Link

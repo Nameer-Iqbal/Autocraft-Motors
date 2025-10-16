@@ -232,7 +232,7 @@ export default function Warranty() {
           />
           <StatCard
             icon={<Star className="h-6 w-6 text-emerald-600" />}
-            value="4.9/5"
+            value="4.6/5"
             label="Customer Rating"
           />
         </div>

@@ -16,22 +16,22 @@ export interface Car {
 
 export const cars: Car[] = [
   {
-    id: "1",
-    name: "BMW M4 Competition",
+    id: "0001",
+    name: "BMW",
     brand: "BMW",
-    model: "M4",
-    year: 2024,
-    price: 89900,
+    model: "X3",
+    year: 2019,
+    price: 13999,
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=600&fit=crop&crop=faces,center",
-    type: "Coupe",
-    fuelType: "Gasoline",
+    type: "SUV",
+    fuelType: "Diesel",
     transmission: "Automatic",
-    driveType: "LHD",
-    features: ["Carbon Fiber Roof", "M Driver's Package", "Harman Kardon Audio", "Adaptive Suspension"],
+    driveType: "RHD",
+    features: ["5 Door", "5 Seats", "2 Wheel Drive"],
     featured: true
   },
   {
-    id: "2",
+    id: "0002",
     name: "Mercedes-Benz S-Class",
     brand: "Mercedes-Benz",
     model: "S-Class",

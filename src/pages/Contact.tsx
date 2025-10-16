@@ -36,25 +36,25 @@ export default function Contact() {
           <InfoCard
             icon={<MapPin className="h-6 w-6 text-emerald-600" />}
             title="Visit Our Showroom"
-            primary="123 Luxury Drive, Auto City, AC 12345"
+            primary="Ras Al Khor Industrial Area 3, Ducumz Show Room No 94, Dubai, UAE"
             secondary="Our state-of-the-art showroom features the latest models."
           />
           <InfoCard
             icon={<Phone className="h-6 w-6 text-emerald-600" />}
             title="Call Us"
-            primary="(555) 123-4567"
+            primary="+971 52 482 5533"
             secondary="Speak directly with our automotive experts."
           />
           <InfoCard
             icon={<Mail className="h-6 w-6 text-emerald-600" />}
             title="Email Us"
-            primary="info@elitemotors.com"
+            primary="sales@greenwaymotors.ae"
             secondary="Get detailed info about any vehicle."
           />
           <InfoCard
             icon={<Clock className="h-6 w-6 text-emerald-600" />}
             title="Business Hours"
-            primary="Mon–Sat: 9AM–8PM, Sun: 11AM–6PM"
+            primary="Mon - Sat: 10am - 8pm"
             secondary="Extended hours for your convenience."
           />
         </div>
@@ -122,7 +122,7 @@ export default function Contact() {
                   asChild
                 >
                   <a
-                    href="https://maps.google.com/?q=123+Luxury+Drive,+Auto+City,+AC+12345"
+                    href="https://maps.google.com/?q=Ras+Al+Khor+Industrial+Area+3,+Ducumz+Show+Room+No+94,+Dubai,+UAE"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -135,7 +135,7 @@ export default function Contact() {
                   className="w-full bg-white text-emerald-600 border-emerald-600 hover:bg-emerald-600 hover:text-white"
                   asChild
                 >
-                  <a href="mailto:info@elitemotors.com">
+                  <a href="mailto:sales@greenwaymotors.ae">
                     Email Us
                     <Mail className="ml-2 h-4 w-4" />
                   </a>
@@ -159,7 +159,7 @@ export default function Contact() {
               className="w-full h-72"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537363153169!3d-37.81627974201266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAwLjYiUyAxNDTCsDU3JzE1LjQiRQ!5e0!3m2!1sen!2sus!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.8!2d55.37426107116429!3d25.171951329653464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEwJzE5LjEiTiA1NcKwMjInMjcuMyJF!5e0!3m2!1sen!2sae!4v1700000000000"
             />
           </div>
         </div>
