@@ -85,7 +85,7 @@ export default function FeaturedCars() {
                     size="sm"
                     className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
                   >
-                    View Details
+                    View More
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
