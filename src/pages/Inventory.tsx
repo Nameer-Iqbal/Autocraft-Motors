@@ -28,11 +28,13 @@ export default function Inventory() {
   const [sortBy, setSortBy] = useState("name");
   const [filterBrand, setFilterBrand] = useState("all");
   const [filterType, setFilterType] = useState("all");
+  const [filterDriveType, setFilterDriveType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const carsPerPage = 6;
 
   const brands = Array.from(new Set(cars.map((car) => car.brand)));
   const types = Array.from(new Set(cars.map((car) => car.type)));
+  const driveTypes = Array.from(new Set(cars.map((car) => car.driveType)));
 
   const filteredAndSortedCars = useMemo(() => {
     let filtered = cars.filter((car) => {
@@ -45,8 +47,10 @@ export default function Inventory() {
 
       const matchesBrand = filterBrand === "all" || car.brand === filterBrand;
       const matchesType = filterType === "all" || car.type === filterType;
+      const matchesDriveType =
+        filterDriveType === "all" || car.driveType === filterDriveType;
 
-      return matchesSearch && matchesBrand && matchesType;
+      return matchesSearch && matchesBrand && matchesType && matchesDriveType;
     });
 
     filtered.sort((a, b) => {
@@ -65,7 +69,7 @@ export default function Inventory() {
     });
 
     return filtered;
-  }, [searchTerm, sortBy, filterBrand, filterType]);
+  }, [searchTerm, sortBy, filterBrand, filterType, filterDriveType]);
 
   // Pagination logic
   const totalPages = Math.ceil(filteredAndSortedCars.length / carsPerPage);
@@ -76,7 +80,7 @@ export default function Inventory() {
   // Reset to page 1 when filters change
   useMemo(() => {
     setCurrentPage(1);
-  }, [searchTerm, sortBy, filterBrand, filterType]);
+  }, [searchTerm, sortBy, filterBrand, filterType, filterDriveType]);
 
   return (
     <div className="min-h-screen py-16 bg-white">
@@ -94,7 +98,7 @@ export default function Inventory() {
 
         {/* Search & Filters */}
         <div className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -133,6 +137,21 @@ export default function Inventory() {
                 {types.map((type) => (
                   <SelectItem key={type} value={type}>
                     {type}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            {/* Drive Type Filter */}
+            <Select value={filterDriveType} onValueChange={setFilterDriveType}>
+              <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
+                <SelectValue placeholder="All Drive Types" />
+              </SelectTrigger>
+              <SelectContent className="bg-white text-gray-900 border border-gray-200">
+                <SelectItem value="all">All Drive Types</SelectItem>
+                {driveTypes.map((driveType) => (
+                  <SelectItem key={driveType} value={driveType}>
+                    {driveType}
                   </SelectItem>
                 ))}
               </SelectContent>

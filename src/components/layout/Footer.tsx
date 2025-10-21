@@ -182,20 +182,7 @@ export default function Footer() {
             <p className="text-sm text-white/60">
               © 2005 Greenway Motors. All rights reserved.
             </p>
-            <div className="flex gap-6 mt-4 sm:mt-0">
-              <Link
-                to="#"
-                className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="#"
-                className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
-              >
-                Terms of Service
-              </Link>
-            </div>
+            <div className="flex gap-6 mt-4 sm:mt-0"></div>
           </div>
         </div>
       </div>
