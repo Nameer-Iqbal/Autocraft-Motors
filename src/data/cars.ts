@@ -27,7 +27,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "5 Seats", "2 Wheel Drive", "10,100 KM Mileage", "2000 CC", "Black Color"],
+    features: ["5 Door", "5 Seats", "2 Wheel Drive", "10,100 KM", "2000 CC", "Black Color"],
     featured: true
   },
   {
@@ -42,7 +42,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Doors", "5 Seats", "4 Wheel Drive","70,200 KM Mileage", "2000 CC", "Black Color"],
+    features: ["5 Doors", "5 Seats", "4 Wheel Drive","70,200 KM", "2000 CC", "Black Color"],
     featured: true
   },
   {
@@ -57,7 +57,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "7 Seat", "4WD", "46,338 KM Mileage", "4500 CC", "Grey Color"],
+    features: ["5 Door", "7 Seat", "4WD", "46,338 KM", "4500 CC", "Grey Color"],
     featured: false
   },
   {
@@ -72,7 +72,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "2 Wheel Drive", "61,712 KM Mileage", "2000 CC", "White Color"],
+    features: ["4 Door", "5 Seats", "2 Wheel Drive", "61,712 KM", "2000 CC", "White Color"],
     featured: true
   },
   {
@@ -87,7 +87,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "3,685 KM Mileage", "2800 CC", "Black Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "3,685 KM", "2800 CC", "Black Color"],
     featured: false
   },
   {
@@ -102,7 +102,7 @@ export const cars: Car[] = [
     fuelType: "Hybrid",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "5 Seats", "2 Wheel Drive", "2,000 KM Mileage", "2500 CC", "Silver Color"],
+    features: ["5 Door", "5 Seats", "2 Wheel Drive", "2,000 KM", "2500 CC", "Silver Color"],
     featured: false
   },
   {
@@ -117,7 +117,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "65,214 KM Mileage", "2800 CC", "White Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "65,214 KM", "2800 CC", "White Color"],
     featured: false
   },
   {
@@ -132,7 +132,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "43,000 KM Mileage", "2800 CC", "Grey Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "43,000 KM", "2800 CC", "Grey Color"],
     featured: false
   },
   {
@@ -147,7 +147,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "36,904 KM Mileage", "2800 CC", "Blue Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "36,904 KM", "2800 CC", "Blue Color"],
     featured: false
   },
   {
@@ -162,7 +162,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "41,197 KM Mileage", "2800 CC", "Red Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "41,197 KM", "2800 CC", "Red Color"],
     featured: false
   },
   {
@@ -177,7 +177,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "4,900 KM Mileage", "2800 CC", "Green Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "4,900 KM", "2800 CC", "Green Color"],
     featured: true
   },
   {
@@ -192,7 +192,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Manual",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "27,700 KM Mileage", "4500 CC", "Beige Color"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "27,700 KM", "4500 CC", "Beige Color"],
     featured: false
   },
   {
@@ -207,7 +207,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["5 Door", "5 Seats"],
+    features: ["5 Door", "5 Seats", "11,650 KM", "4000 CC", "Black Color"],
     featured: true
   },
   {
@@ -222,7 +222,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats"],
+    features: ["4 Door", "5 Seats", "34,000 KM", "4000 CC", "Black Color"],
     featured: false
   },
   {
@@ -237,7 +237,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats"],
+    features: ["4 Door", "5 Seats", "78,000 KM", "3500 CC", "Silver Color"],
     featured: false
   },
   {
@@ -252,7 +252,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats"],
+    features: ["4 Door", "5 Seats", "60,000 KM", "5700 CC", "White Color"],
     featured: false
   },
   {
@@ -267,7 +267,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats"],
+    features: ["4 Door", "5 Seats", "300,000 KM", "1800 CC", "Grey Color"],
     featured: false
   },
   {
@@ -282,7 +282,7 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats"],
+    features: ["4 Door", "5 Seats", "41,000 KM", "5000 CC", "White Color"],
     featured: false
   }
 ];
