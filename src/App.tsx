@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import Layout from "./components/layout/Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
@@ -13,6 +14,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import CarSales from "./pages/services/CarSales";
 import Financing from "./pages/services/Financing";
@@ -25,34 +27,37 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="inventory" element={<Inventory />} />
-              <Route path="services" element={<Services />} />
-              <Route path="about" element={<About />} />
-              <Route path="contact" element={<Contact />} />
-            </Route>
-            <Route path="/services/car-sales" element={<CarSales />} />
-            <Route path="/services/financing" element={<Financing />} />
-            <Route path="/services/trade-in" element={<TradeIn />} />
-            <Route path="/services/maintenance" element={<Maintenance />} />
-            <Route path="/services/warranty" element={<Warranty />} />
-            <Route path="/services/test-drive" element={<TestDrive />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="inventory" element={<Inventory />} />
+                <Route path="services" element={<Services />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+              </Route>
+              <Route path="/services/car-sales" element={<CarSales />} />
+              <Route path="/services/financing" element={<Financing />} />
+              <Route path="/services/trade-in" element={<TradeIn />} />
+              <Route path="/services/maintenance" element={<Maintenance />} />
+              <Route path="/services/warranty" element={<Warranty />} />
+              <Route path="/services/test-drive" element={<TestDrive />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/profile" element={<Profile />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 

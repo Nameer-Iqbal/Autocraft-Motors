@@ -12,6 +12,7 @@ import {
   User,
   Loader2,
   ArrowLeft,
+  Phone,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
@@ -27,6 +28,7 @@ export default function Signup() {
     firstName?: string;
     lastName?: string;
     email?: string;
+    contactNumber?: string;
     password?: string;
     confirmPassword?: string;
   }>({});
@@ -34,6 +36,7 @@ export default function Signup() {
     firstName: "",
     lastName: "",
     email: "",
+    contactNumber: "",
     password: "",
     confirmPassword: "",
   });
@@ -43,6 +46,7 @@ export default function Signup() {
       firstName?: string;
       lastName?: string;
       email?: string;
+      contactNumber?: string;
       password?: string;
       confirmPassword?: string;
     } = {};
@@ -59,6 +63,15 @@ export default function Signup() {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.contactNumber) {
+      newErrors.contactNumber = "Contact number is required";
+    } else if (
+      !/^[\d\s\-\+\(\)]+$/.test(formData.contactNumber) ||
+      formData.contactNumber.length < 10
+    ) {
+      newErrors.contactNumber = "Please enter a valid contact number";
     }
 
     if (!formData.password) {
@@ -91,10 +104,15 @@ export default function Signup() {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Call the login function from auth context to automatically sign in
-      login(formData.email, formData.firstName, formData.lastName);
+      login(
+        formData.email,
+        formData.firstName,
+        formData.lastName,
+        formData.contactNumber
+      );
 
       toast.success(
-        "Account created successfully! Welcome to Autocraft Motors!"
+        "Account created successfully! Welcome to Greenway Motors!"
       );
 
       // Navigate to home page after successful signup and auto-login
@@ -146,7 +164,7 @@ export default function Signup() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">
-            Join Autocraft Motors
+            Join Greenway Motors
           </h1>
           <p className="text-white/90">Create your account to get started</p>
         </div>
@@ -247,6 +265,36 @@ export default function Signup() {
                 </div>
                 {errors.email && (
                   <p className="text-sm text-red-500">{errors.email}</p>
+                )}
+              </div>
+
+              {/* Contact Number Field */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="contactNumber"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Contact Number
+                </Label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Input
+                    id="contactNumber"
+                    name="contactNumber"
+                    type="tel"
+                    placeholder="+1 234 567 8900"
+                    value={formData.contactNumber}
+                    onChange={handleInputChange}
+                    className={`pl-10 bg-white text-gray-900 placeholder:text-gray-400 focus:ring-emerald-500 focus:border-emerald-500 ${
+                      errors.contactNumber
+                        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                        : "border-gray-200"
+                    }`}
+                    required
+                  />
+                </div>
+                {errors.contactNumber && (
+                  <p className="text-sm text-red-500">{errors.contactNumber}</p>
                 )}
               </div>
 

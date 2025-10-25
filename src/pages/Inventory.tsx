@@ -1,4 +1,7 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,6 +35,9 @@ import {
 } from "lucide-react";
 
 export default function Inventory() {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [filterBrand, setFilterBrand] = useState("all");
@@ -441,9 +447,42 @@ export default function Inventory() {
                 </div>
 
                 {/* Contact CTA */}
-                <div className="pt-4 border-t border-gray-200">
-                  <Button className="w-full bg-emerald-600 text-white hover:bg-emerald-700">
+                <div className="pt-4 border-t border-gray-200 flex gap-3">
+                  <Button
+                    onClick={() => {
+                      setSelectedCar(null);
+                      navigate("/contact");
+                    }}
+                    className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
+                  >
                     Contact Us
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      if (!isAuthenticated) {
+                        toast({
+                          title: "Login Required",
+                          description: "Please sign in to get a price quote.",
+                          variant: "default",
+                        });
+                        setSelectedCar(null);
+                        navigate("/signup");
+                      } else {
+                        // User is authenticated, redirect to WhatsApp
+                        setSelectedCar(null);
+                        const carInfo = selectedCar
+                          ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`
+                          : "vehicle";
+                        const message = `Hi! I'm interested in getting a FOB price quote for this ${carInfo}.`;
+                        const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
+                          message
+                        )}`;
+                        window.open(whatsappUrl, "_blank");
+                      }
+                    }}
+                    className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
+                  >
+                    Get FOB Price Quote
                   </Button>
                 </div>
               </div>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogOut } from "lucide-react";
+import { Menu, X, LogOut, UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
+import LanguageSelector from "@/components/LanguageSelector";
 
 // 1) ⬇️ Import your logo here
 import logo from "@/assets/elite-motors-logo.jpg"; // <- change to your file
@@ -49,7 +50,7 @@ export default function Header() {
         </div>
 
         {/* DESKTOP NAV LINKS */}
-        <div className="hidden lg:flex lg:gap-x-10">
+        <div className="hidden lg:flex lg:gap-x-10 lg:-ml-24">
           {navigation.map((item) => {
             const active = location.pathname === item.href;
             return (
@@ -69,19 +70,25 @@ export default function Header() {
           })}
         </div>
 
-        {/* RIGHT: Auth buttons */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3">
+        {/* RIGHT: Auth buttons and Language */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3 lg:-mr-24">
           {isAuthenticated ? (
-            <div className="flex items-center gap-3">
-              <span className="text-white text-sm">
-                {/* Welcome, {user?.firstName || user?.email} */}
-              </span>
+            <div className="flex items-center gap-2">
+              <Link
+                to="/profile"
+                className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
+              >
+                <UserCircle className="h-5 w-5 text-white" />
+                <span className="text-white text-sm">
+                  {user?.firstName || user?.email}
+                </span>
+              </Link>
               <Button
                 onClick={logout}
-                className="bg-red-600 text-white hover:bg-red-700 transition-colors h-8 px-3 text-sm"
+                className="bg-red-600 text-white hover:bg-red-700 transition-colors h-8 px-2 text-sm whitespace-nowrap flex items-center justify-center gap-1"
               >
-                <LogOut className="mr-2 h-4 w-4" />
-                Logout
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
               </Button>
             </div>
           ) : (
@@ -100,6 +107,7 @@ export default function Header() {
               </Button>
             </>
           )}
+          <LanguageSelector />
         </div>
       </nav>
 
@@ -148,13 +156,21 @@ export default function Header() {
               </div>
 
               <div className="mt-6">
+                <div className="mb-4">
+                  <LanguageSelector />
+                </div>
                 {isAuthenticated ? (
                   <div className="space-y-3">
-                    <div className="text-center">
-                      <span className="text-white text-sm">
-                        Welcome, {user?.firstName || user?.email}
+                    <Link
+                      to="/profile"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+                    >
+                      <UserCircle className="h-5 w-5 text-white" />
+                      <span className="text-white text-sm font-medium">
+                        {user?.firstName || user?.email}
                       </span>
-                    </div>
+                    </Link>
                     <Button
                       onClick={() => {
                         logout();
