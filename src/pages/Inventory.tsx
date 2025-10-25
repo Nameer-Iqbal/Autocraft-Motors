@@ -4,13 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cars } from "@/data/cars";
+import { cars, type Car as CarType } from "@/data/cars";
 import {
   Search,
   Filter,
@@ -21,6 +28,7 @@ import {
   Car,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 
 export default function Inventory() {
@@ -30,6 +38,7 @@ export default function Inventory() {
   const [filterType, setFilterType] = useState("all");
   const [filterDriveType, setFilterDriveType] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCar, setSelectedCar] = useState<CarType | null>(null);
   const carsPerPage = 6;
 
   const brands = Array.from(new Set(cars.map((car) => car.brand)));
@@ -187,16 +196,14 @@ export default function Inventory() {
           {currentCars.map((car) => (
             <Card
               key={car.id}
-              className="group rounded-2xl border border-gray-200 bg-white shadow-sm
-                         transition-all duration-300 hover:-translate-y-1 hover:shadow-lg
-                         hover:ring-1 hover:ring-emerald-500/20"
+              className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-sm"
             >
               {/* Image */}
               <div className="relative overflow-hidden rounded-t-2xl">
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="w-full h-48 object-cover"
                 />
 
                 {/* Year (neutral, no hover color) */}
@@ -243,6 +250,7 @@ export default function Inventory() {
                   </span>
                   <Button
                     size="sm"
+                    onClick={() => setSelectedCar(car)}
                     className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
                   >
                     View More
@@ -314,6 +322,135 @@ export default function Inventory() {
           </>
         )}
       </div>
+
+      {/* Car Details Dialog */}
+      <Dialog
+        open={!!selectedCar}
+        onOpenChange={(open) => !open && setSelectedCar(null)}
+      >
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white">
+          {selectedCar && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-gray-900">
+                  {selectedCar.name} {selectedCar.model}
+                </DialogTitle>
+                <DialogDescription className="text-lg">
+                  {selectedCar.brand} • {selectedCar.year}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-6">
+                {/* Main Image */}
+                <div className="rounded-lg overflow-hidden">
+                  <img
+                    src={selectedCar.image}
+                    alt={selectedCar.name}
+                    className="w-full h-64 object-cover"
+                  />
+                </div>
+
+                {/* Price */}
+                <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-lg">
+                  <span className="text-2xl font-bold text-emerald-600">
+                    ${selectedCar.price.toLocaleString()}
+                  </span>
+                  <Badge className="bg-emerald-600 text-white px-3 py-1">
+                    {selectedCar.year}
+                  </Badge>
+                </div>
+
+                {/* Specifications Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Fuel className="h-5 w-5 text-emerald-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Fuel Type</p>
+                      <p className="font-semibold text-gray-900">
+                        {selectedCar.fuelType}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Cog className="h-5 w-5 text-emerald-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Transmission</p>
+                      <p className="font-semibold text-gray-900">
+                        {selectedCar.transmission}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Car className="h-5 w-5 text-emerald-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Drive Type</p>
+                      <p className="font-semibold text-gray-900">
+                        {selectedCar.driveType}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Calendar className="h-5 w-5 text-emerald-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Vehicle Type</p>
+                      <p className="font-semibold text-gray-900">
+                        {selectedCar.type}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Features */}
+                {selectedCar.features && selectedCar.features.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-black mb-3">
+                      Features
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedCar.features.map((feature, index) => (
+                        <Badge
+                          key={index}
+                          variant="outline"
+                          className="px-3 py-1 text-black"
+                        >
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Description */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    Description
+                  </h3>
+                  <p className="text-gray-600">
+                    This {selectedCar.year} {selectedCar.brand}{" "}
+                    {selectedCar.model} is a premium{" "}
+                    {selectedCar.type.toLowerCase()}
+                    {selectedCar.type === "SUV" ? " with excellent" : ""}{" "}
+                    performance and reliability.
+                    {selectedCar.fuelType === "Hybrid"
+                      ? " Featuring advanced hybrid technology for superior fuel efficiency."
+                      : ""}{" "}
+                    The {selectedCar.transmission.toLowerCase()} transmission
+                    ensures smooth driving, while the {selectedCar.driveType}{" "}
+                    configuration provides optimal handling and control.
+                  </p>
+                </div>
+
+                {/* Contact CTA */}
+                <div className="pt-4 border-t border-gray-200">
+                  <Button className="w-full bg-emerald-600 text-white hover:bg-emerald-700">
+                    Contact Us
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

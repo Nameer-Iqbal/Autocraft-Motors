@@ -27,7 +27,7 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "5 Seats", "2 Wheel Drive"],
+    features: ["5 Door", "5 Seats", "2 Wheel Drive", "10,100 KM Mileage", "2000 CC", "Black Color"],
     featured: true
   },
   {
@@ -42,11 +42,26 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Doors", "5 Seats", "4 Wheel Drive",],
+    features: ["5 Doors", "5 Seats", "4 Wheel Drive","70,200 KM Mileage", "2000 CC", "Black Color"],
     featured: true
   },
   {
     id: "0003",
+    name: "Toyota",
+    brand: "Toyota",
+    model: "Land Cruiser",
+    year: 2020,
+    price: 38500,
+    image: "/src/assets/Cars/LandCruiserGrey.jpg",
+    type: "SUV",
+    fuelType: "Diesel",
+    transmission: "Automatic",
+    driveType: "RHD",
+    features: ["5 Door", "7 Seat", "4WD", "46,338 KM Mileage", "4500 CC", "Grey Color"],
+    featured: false
+  },
+  {
+    id: "0004",
     name: "Hyundai",
     brand: "Hyundai",
     model: "Tucson",
@@ -57,11 +72,11 @@ export const cars: Car[] = [
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "2 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "2 Wheel Drive", "61,712 KM Mileage", "2000 CC", "White Color"],
     featured: true
   },
   {
-    id: "0004",
+    id: "0005",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux",
@@ -72,11 +87,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "3,685 KM Mileage", "2800 CC", "Black Color"],
     featured: false
   },
   {
-    id: "0005",
+    id: "0006",
     name: "Toyota",
     brand: "Toyota",
     model: "RAV4",
@@ -87,11 +102,11 @@ export const cars: Car[] = [
     fuelType: "Hybrid",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "5 Seats", "2 Wheel Drive"],
+    features: ["5 Door", "5 Seats", "2 Wheel Drive", "2,000 KM Mileage", "2500 CC", "Silver Color"],
     featured: false
   },
   {
-    id: "0006",
+    id: "0007",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux",
@@ -102,11 +117,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "65,214 KM Mileage", "2800 CC", "White Color"],
     featured: false
   },
   {
-    id: "0007",
+    id: "0008",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux SR5",
@@ -117,11 +132,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "43,000 KM Mileage", "2800 CC", "Grey Color"],
     featured: false
   },
   {
-    id: "0008",
+    id: "0009",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux",
@@ -132,11 +147,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "36,904 KM Mileage", "2800 CC", "Blue Color"],
     featured: false
   },
   {
-    id: "0009",
+    id: "0010",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux",
@@ -147,11 +162,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "41,197 KM Mileage", "2800 CC", "Red Color"],
     featured: false
   },
   {
-    id: "0010",
+    id: "0011",
     name: "Toyota",
     brand: "Toyota",
     model: "Hilux",
@@ -162,11 +177,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "4,900 KM Mileage", "2800 CC", "Green Color"],
     featured: true
   },
   {
-    id: "0011",
+    id: "0012",
     name: "Toyota",
     brand: "Toyota",
     model: "Land Cruiser",
@@ -177,11 +192,11 @@ export const cars: Car[] = [
     fuelType: "Diesel",
     transmission: "Manual",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive"],
+    features: ["4 Door", "5 Seats", "4 Wheel Drive", "27,700 KM Mileage", "4500 CC", "Beige Color"],
     featured: false
   },
   {
-    id: "0012",
+    id: "0013",
     name: "Mercedes",
     brand: "Mercedes-Benz",
     model: "G-Wagon Gloss Black",
@@ -196,7 +211,7 @@ export const cars: Car[] = [
     featured: true
   },
   {
-    id: "0013",
+    id: "0014",
     name: "Mercedes",
     brand: "Mercedes-Benz",
     model: "G-Wagon Matte Black",
@@ -211,7 +226,7 @@ export const cars: Car[] = [
     featured: false
   },
   {
-    id: "0014",
+    id: "0015",
     name: "Mercedes E-350",
     brand: "Mercedes-Benz",
     model: "E-350",
@@ -226,7 +241,7 @@ export const cars: Car[] = [
     featured: false
   },
   {
-    id: "0015",
+    id: "0016",
     name: "Toyota",
     brand: "Toyota",
     model: "Tundra",
@@ -241,7 +256,7 @@ export const cars: Car[] = [
     featured: false
   },
   {
-    id: "0016",
+    id: "0017",
     name: "Mercedes C-200",
     brand: "Mercedes-Benz",
     model: "C-200",
@@ -256,7 +271,7 @@ export const cars: Car[] = [
     featured: false
   },
   {
-    id: "0017",
+    id: "0018",
     name: "Range Rover",
     brand: "Range Rover",
     model: "Range Rover Sport SVR",
