@@ -12,5 +12,12 @@
     "allowJs": true,
     "noUnusedLocals": false,
     "strictNullChecks": false
+  },
+  "ts-node": {
+    "esm": true,
+    "compilerOptions": {
+      "module": "ES2022",
+      "moduleResolution": "node"
+    }
   }
 }

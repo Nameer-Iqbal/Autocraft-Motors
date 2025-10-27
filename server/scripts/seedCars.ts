@@ -1,22 +1,9 @@
-export interface Car {
-  id: string;
-  name: string;
-  brand: string;
-  model: string;
-  year: number;
-  price: number;
-  image: string;
-  type: string;
-  fuelType: string;
-  transmission: string;
-  driveType: string;
-  features: string[];
-  featured: boolean;
-  vehicleCode?: string;
-  chasisNumber?: string;
-}
+import mongoose from 'mongoose';
+import Car from '../models/Car';
+import { connectDB, disconnectDB } from '../db/connection';
 
-export const cars: Car[] = [
+// Import car data (you can copy this from src/data/cars.ts)
+const carsData = [
   {
     id: "0001",
     name: "BMW",
@@ -101,193 +88,213 @@ export const cars: Car[] = [
     price: 16500,
     image: "/src/assets/Cars/rav4.jpg",
     type: "SUV",
-    fuelType: "Hybrid",
+    fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["5 Door", "5 Seats", "2 Wheel Drive", "2,000 KM", "2500 CC", "Silver Color"],
-    featured: false
+    features: ["5 Door", "5 Seats", "4 Wheel Drive", "1,230 KM", "2000 CC", "Black Color"],
+    featured: true
   },
   {
     id: "0007",
-    name: "Toyota",
-    brand: "Toyota",
-    model: "Hilux",
-    year: 2018,
-    price: 21000,
-    image: "/src/assets/Cars/Hilux2018.jpg",
-    type: "Pickup",
-    fuelType: "Diesel",
+    name: "Tesla",
+    brand: "Tesla",
+    model: "Model 3",
+    year: 2023,
+    price: 42500,
+    image: "/src/assets/Cars/tesla.jpg",
+    type: "Sedan",
+    fuelType: "Electric",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "65,214 KM", "2800 CC", "White Color"],
-    featured: false
+    features: ["4 Door", "5 Seats", "All Wheel Drive", "12,500 KM", "Electric", "White Color"],
+    featured: true
   },
   {
     id: "0008",
-    name: "Toyota",
-    brand: "Toyota",
-    model: "Hilux SR5",
-    year: 2022,
-    price: 23000,
-    image: "/src/assets/Cars/HiluxSR5.jpg",
-    type: "Pickup",
+    name: "Mercedes-Benz",
+    brand: "Mercedes-Benz",
+    model: "GLC",
+    year: 2021,
+    price: 35800,
+    image: "/src/assets/Cars/mercedes_GLC.jpg",
+    type: "SUV",
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "43,000 KM", "2800 CC", "Grey Color"],
+    features: ["5 Door", "5 Seats", "All Wheel Drive", "24,300 KM", "2000 CC", "Silver Color"],
     featured: false
   },
   {
     id: "0009",
-    name: "Toyota",
-    brand: "Toyota",
-    model: "Hilux",
+    name: "Audi",
+    brand: "Audi",
+    model: "Q7",
     year: 2019,
-    price: 21500,
-    image: "/src/assets/Cars/HiluxBlue.jpg",
-    type: "Pickup",
+    price: 32000,
+    image: "/src/assets/Cars/Audi_Q7.jpg",
+    type: "SUV",
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "36,904 KM", "2800 CC", "Blue Color"],
+    features: ["5 Door", "7 Seats", "All Wheel Drive", "45,800 KM", "3000 CC", "Black Color"],
     featured: false
   },
   {
     id: "0010",
     name: "Toyota",
     brand: "Toyota",
-    model: "Hilux",
-    year: 2020,
-    price: 23000,
-    image: "/src/assets/Cars/HiluxRed.jpg",
-    type: "Pickup",
-    fuelType: "Diesel",
+    model: "Corolla",
+    year: 2022,
+    price: 14200,
+    image: "/src/assets/Cars/corolla.jpg",
+    type: "Sedan",
+    fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "41,197 KM", "2800 CC", "Red Color"],
-    featured: false
+    features: ["4 Door", "5 Seats", "Front Wheel Drive", "28,900 KM", "1800 CC", "White Color"],
+    featured: true
   },
   {
     id: "0011",
     name: "Toyota",
     brand: "Toyota",
-    model: "Hilux",
-    year: 2022,
-    price: 22300,
-    image: "/src/assets/Cars/HiluxGreen.jpg",
-    type: "Pickup",
+    model: "Land Cruiser",
+    year: 2021,
+    price: 42000,
+    image: "/src/assets/Cars/Toyota_Land_Cruiser_Black.jpg",
+    type: "SUV",
     fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "4,900 KM", "2800 CC", "Green Color"],
+    features: ["5 Door", "7 Seat", "4WD", "18,200 KM", "4500 CC", "Black Color"],
     featured: true
   },
   {
     id: "0012",
-    name: "Toyota",
-    brand: "Toyota",
-    model: "Land Cruiser",
-    year: 2023,
-    price: 35000,
-    image: "/src/assets/Cars/LandCruiser2023.jpg",
-    type: "Pickup",
-    fuelType: "Diesel",
-    transmission: "Manual",
-    driveType: "RHD",
-    features: ["4 Door", "5 Seats", "4 Wheel Drive", "27,700 KM", "4500 CC", "Beige Color"],
-    featured: false
-  },
-  {
-    id: "0013",
-    name: "Mercedes",
+    name: "Mercedes-Benz",
     brand: "Mercedes-Benz",
-    model: "G-Wagon Gloss Black",
+    model: "G-Wagon",
     year: 2022,
-    price: 161000,
-    image: "/src/assets/Cars/Gwagon.jpg",
+    price: 156000,
+    image: "/src/assets/Cars/Mercedes_G_Wagon_Black.jpg",
     type: "SUV",
-    fuelType: "Petrol",
+    fuelType: "Diesel",
     transmission: "Automatic",
-    driveType: "LHD",
-    features: ["5 Door", "5 Seats", "11,650 KM", "4000 CC", "Black Color"],
+    driveType: "RHD",
+    features: ["5 Door", "5 Seat", "4WD", "8,500 KM", "3000 CC", "Black Color"],
     featured: true
   },
   {
-    id: "0014",
-    name: "Mercedes",
+    id: "0013",
+    name: "Mercedes-Benz",
     brand: "Mercedes-Benz",
-    model: "G-Wagon Matte Black",
-    year: 2022,
-    price: 160000,
-    image: "/src/assets/Cars/GwagonMatte.jpg",
+    model: "G-Wagon",
+    year: 2023,
+    price: 158000,
+    image: "/src/assets/Cars/Mercedes_G_Wagon_Matte_Black.jpg",
     type: "SUV",
-    fuelType: "Petrol",
+    fuelType: "Diesel",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats", "34,000 KM", "4000 CC", "Black Color"],
+    features: ["5 Door", "5 Seat", "4WD", "11,650 KM", "4000 CC", "Black Color"],
     featured: false
   },
   {
-    id: "0015",
-    name: "Mercedes E-350",
+    id: "0014",
+    name: "Mercedes-Benz",
     brand: "Mercedes-Benz",
     model: "E-350",
     year: 2009,
     price: 9000,
-    image: "/src/assets/Cars/MercedesE350.jpg",
+    image: "/src/assets/Cars/Mercedes_E_350.jpg",
     type: "Sedan",
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats", "78,000 KM", "3500 CC", "Silver Color"],
+    features: ["4 Door", "5 Seat", "2WD", "34,000 KM", "4000 CC", "Black Color"],
     featured: false
   },
   {
-    id: "0016",
+    id: "0015",
     name: "Toyota",
     brand: "Toyota",
     model: "Tundra",
     year: 2019,
     price: 31400,
-    image: "/src/assets/Cars/Tundra.jpg",
+    image: "/src/assets/Cars/Toyota_Tundra.jpg",
     type: "Pickup",
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats", "60,000 KM", "5700 CC", "White Color"],
+    features: ["4 Door", "5 Seat", "4WD", "28,500 KM", "5700 CC", "White Color"],
     featured: false
   },
   {
-    id: "0017",
-    name: "Mercedes C-200",
+    id: "0016",
+    name: "Mercedes-Benz",
     brand: "Mercedes-Benz",
     model: "C-200",
     year: 2010,
     price: 6000,
-    image: "/src/assets/Cars/MercedesC200.jpg",
+    image: "/src/assets/Cars/Mercedes_C_200.jpg",
     type: "Sedan",
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats", "300,000 KM", "1800 CC", "Grey Color"],
+    features: ["4 Door", "5 Seat", "2WD", "52,000 KM", "2000 CC", "Silver Color"],
     featured: false
   },
   {
-    id: "0018",
+    id: "0017",
     name: "Range Rover",
     brand: "Range Rover",
-    model: "Range Rover Sport SVR",
+    model: "Vogue",
     year: 2022,
     price: 95600,
-    image: "/src/assets/Cars/RangeRoverSport.jpg",
+    image: "/src/assets/Cars/Range_Rover.jpg",
     type: "SUV",
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "LHD",
-    features: ["4 Door", "5 Seats", "41,000 KM", "5000 CC", "White Color"],
+    features: ["5 Door", "5 Seat", "4WD", "12,300 KM", "3000 CC", "Black Color"],
+    featured: true
+  },
+  {
+    id: "0018",
+    name: "BMW",
+    brand: "BMW",
+    model: "X5",
+    year: 2020,
+    price: 38900,
+    image: "/src/assets/Cars/BMW_X5.jpg",
+    type: "SUV",
+    fuelType: "Diesel",
+    transmission: "Automatic",
+    driveType: "RHD",
+    features: ["5 Door", "5 Seat", "4WD", "32,100 KM", "3000 CC", "White Color"],
     featured: false
   }
 ];
 
-export const getFeaturedCars = () => cars.filter(car => car.featured);
-export const getCarById = (id: string) => cars.find(car => car.id === id);
+const seedCars = async () => {
+  try {
+    await connectDB();
+    console.log('Connected to MongoDB');
+
+    // Clear existing cars
+    await Car.deleteMany({});
+    console.log('Cleared existing cars');
+
+    // Insert new cars
+    const insertedCars = await Car.insertMany(carsData);
+    console.log(`Successfully inserted ${insertedCars.length} cars into the database`);
+
+    await disconnectDB();
+    process.exit(0);
+  } catch (error) {
+    console.error('Error seeding database:', error);
+    process.exit(1);
+  }
+};
+
+seedCars();
