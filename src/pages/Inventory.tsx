@@ -1,7 +1,6 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/contexts/AuthContext";
-import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,8 +35,7 @@ import {
 
 export default function Inventory() {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
-  const { toast } = useToast();
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [filterBrand, setFilterBrand] = useState("all");
@@ -103,11 +101,10 @@ export default function Inventory() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 text-gray-900">
-            Our Inventory <span className="text-emerald-600"></span>
+            {t("ourInventory")} <span className="text-emerald-600"></span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover our complete collection of premium vehicles. Each car is
-            carefully inspected and certified to meet our highest standards.
+            {t("inventorySubtitle")}
           </p>
         </div>
 
@@ -118,7 +115,7 @@ export default function Inventory() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
-                placeholder="Search cars..."
+                placeholder={t("searchCars")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-white border border-gray-200 text-gray-900
@@ -130,10 +127,10 @@ export default function Inventory() {
             {/* Brand Filter */}
             <Select value={filterBrand} onValueChange={setFilterBrand}>
               <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder="All Brands" />
+                <SelectValue placeholder={t("allBrands")} />
               </SelectTrigger>
               <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">All Brands</SelectItem>
+                <SelectItem value="all">{t("allBrands")}</SelectItem>
                 {brands.map((brand) => (
                   <SelectItem key={brand} value={brand}>
                     {brand}
@@ -145,10 +142,10 @@ export default function Inventory() {
             {/* Type Filter */}
             <Select value={filterType} onValueChange={setFilterType}>
               <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder="All Types" />
+                <SelectValue placeholder={t("allTypes")} />
               </SelectTrigger>
               <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">All Types</SelectItem>
+                <SelectItem value="all">{t("allTypes")}</SelectItem>
                 {types.map((type) => (
                   <SelectItem key={type} value={type}>
                     {type}
@@ -160,10 +157,10 @@ export default function Inventory() {
             {/* Drive Type Filter */}
             <Select value={filterDriveType} onValueChange={setFilterDriveType}>
               <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder="All Drive Types" />
+                <SelectValue placeholder={t("allDriveTypes")} />
               </SelectTrigger>
               <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">All Drive Types</SelectItem>
+                <SelectItem value="all">{t("allDriveTypes")}</SelectItem>
                 {driveTypes.map((driveType) => (
                   <SelectItem key={driveType} value={driveType}>
                     {driveType}
@@ -175,14 +172,16 @@ export default function Inventory() {
             {/* Sort */}
             <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder="Sort by" />
+                <SelectValue placeholder={t("sortBy")} />
               </SelectTrigger>
               <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="name">Name</SelectItem>
-                <SelectItem value="price-low">Price: Low to High</SelectItem>
-                <SelectItem value="price-high">Price: High to Low</SelectItem>
-                <SelectItem value="year">Year</SelectItem>
-                <SelectItem value="brand">Brand</SelectItem>
+                <SelectItem value="name">{t("name")}</SelectItem>
+                <SelectItem value="price-low">{t("priceLowToHigh")}</SelectItem>
+                <SelectItem value="price-high">
+                  {t("priceHighToLow")}
+                </SelectItem>
+                <SelectItem value="year">{t("year")}</SelectItem>
+                <SelectItem value="brand">{t("brand")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -191,9 +190,9 @@ export default function Inventory() {
         {/* Results Count */}
         <div className="mb-8">
           <p className="text-gray-500">
-            Showing {startIndex + 1}-
-            {Math.min(endIndex, filteredAndSortedCars.length)} of{" "}
-            {filteredAndSortedCars.length} vehicles
+            {t("showing")} {startIndex + 1}-
+            {Math.min(endIndex, filteredAndSortedCars.length)} {t("of")}{" "}
+            {filteredAndSortedCars.length} {t("vehicles")}
           </p>
         </div>
 
@@ -249,17 +248,14 @@ export default function Inventory() {
                   </div>
                 </div>
 
-                {/* Price + CTA */}
-                <div className="mt-5 pt-5 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-xl font-bold text-emerald-600">
-                    ${car.price.toLocaleString()}
-                  </span>
+                {/* CTA */}
+                <div className="mt-5 pt-5 border-t border-gray-100">
                   <Button
                     size="sm"
                     onClick={() => setSelectedCar(car)}
-                    className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                    className="w-full bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
                   >
-                    View More
+                    {t("viewMore")}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
@@ -272,11 +268,9 @@ export default function Inventory() {
           <div className="text-center py-16">
             <Filter className="h-16 w-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              No vehicles found
+              {t("noVehiclesFound")}
             </h3>
-            <p className="text-gray-600">
-              Try adjusting your search criteria or filters.
-            </p>
+            <p className="text-gray-600">{t("tryAdjustingFilters")}</p>
           </div>
         ) : (
           <>
@@ -290,7 +284,7 @@ export default function Inventory() {
                   className="flex items-center gap-1 h-8 px-3 text-sm"
                 >
                   <ChevronLeft className="h-3 w-3" />
-                  Previous
+                  {t("previous")}
                 </Button>
 
                 <div className="flex items-center gap-2">
@@ -320,7 +314,7 @@ export default function Inventory() {
                   disabled={currentPage === totalPages}
                   className="flex items-center gap-1 h-8 px-3 text-sm"
                 >
-                  Next
+                  {t("next")}
                   <ChevronRight className="h-3 w-3" />
                 </Button>
               </div>
@@ -356,11 +350,8 @@ export default function Inventory() {
                   />
                 </div>
 
-                {/* Price */}
-                <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-lg">
-                  <span className="text-2xl font-bold text-emerald-600">
-                    ${selectedCar.price.toLocaleString()}
-                  </span>
+                {/* Year Badge */}
+                <div className="flex items-center justify-end p-4 bg-emerald-50 rounded-lg">
                   <Badge className="bg-emerald-600 text-white px-3 py-1">
                     {selectedCar.year}
                   </Badge>
@@ -371,7 +362,7 @@ export default function Inventory() {
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <Fuel className="h-5 w-5 text-emerald-600" />
                     <div>
-                      <p className="text-sm text-gray-500">Fuel Type</p>
+                      <p className="text-sm text-gray-500">{t("fuelType")}</p>
                       <p className="font-semibold text-gray-900">
                         {selectedCar.fuelType}
                       </p>
@@ -380,7 +371,9 @@ export default function Inventory() {
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <Cog className="h-5 w-5 text-emerald-600" />
                     <div>
-                      <p className="text-sm text-gray-500">Transmission</p>
+                      <p className="text-sm text-gray-500">
+                        {t("transmission")}
+                      </p>
                       <p className="font-semibold text-gray-900">
                         {selectedCar.transmission}
                       </p>
@@ -389,7 +382,7 @@ export default function Inventory() {
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <Car className="h-5 w-5 text-emerald-600" />
                     <div>
-                      <p className="text-sm text-gray-500">Drive Type</p>
+                      <p className="text-sm text-gray-500">{t("driveType")}</p>
                       <p className="font-semibold text-gray-900">
                         {selectedCar.driveType}
                       </p>
@@ -398,7 +391,9 @@ export default function Inventory() {
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <Calendar className="h-5 w-5 text-emerald-600" />
                     <div>
-                      <p className="text-sm text-gray-500">Vehicle Type</p>
+                      <p className="text-sm text-gray-500">
+                        {t("vehicleType")}
+                      </p>
                       <p className="font-semibold text-gray-900">
                         {selectedCar.type}
                       </p>
@@ -410,7 +405,7 @@ export default function Inventory() {
                 {selectedCar.features && selectedCar.features.length > 0 && (
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-3">
-                      Features
+                      {t("features")}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedCar.features.map((feature, index) => (
@@ -429,20 +424,21 @@ export default function Inventory() {
                 {/* Description */}
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    Description
+                    {t("description")}
                   </h3>
                   <p className="text-gray-600">
-                    This {selectedCar.year} {selectedCar.brand}{" "}
-                    {selectedCar.model} is a premium{" "}
-                    {selectedCar.type.toLowerCase()}
-                    {selectedCar.type === "SUV" ? " with excellent" : ""}{" "}
-                    performance and reliability.
+                    {t("carDescription1")} {selectedCar.year}{" "}
+                    {selectedCar.brand} {selectedCar.model}{" "}
+                    {t("carDescription2")} {selectedCar.type.toLowerCase()}{" "}
+                    {selectedCar.type === "SUV" ? t("carDescription3") : ""}{" "}
+                    {t("carDescription4")}
                     {selectedCar.fuelType === "Hybrid"
-                      ? " Featuring advanced hybrid technology for superior fuel efficiency."
+                      ? ` ${t("carDescription5")}`
                       : ""}{" "}
-                    The {selectedCar.transmission.toLowerCase()} transmission
-                    ensures smooth driving, while the {selectedCar.driveType}{" "}
-                    configuration provides optimal handling and control.
+                    {t("carDescription6")}{" "}
+                    {selectedCar.transmission.toLowerCase()}{" "}
+                    {t("transmission").toLowerCase()} {t("carDescription7")}{" "}
+                    {selectedCar.driveType} {t("carDescription8")}
                   </p>
                 </div>
 
@@ -455,34 +451,24 @@ export default function Inventory() {
                     }}
                     className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
                   >
-                    Contact Us
+                    {t("contactUs")}
                   </Button>
                   <Button
                     onClick={() => {
-                      if (!isAuthenticated) {
-                        toast({
-                          title: "Login Required",
-                          description: "Please sign in to get a price quote.",
-                          variant: "default",
-                        });
-                        setSelectedCar(null);
-                        navigate("/signup");
-                      } else {
-                        // User is authenticated, redirect to WhatsApp
-                        setSelectedCar(null);
-                        const carInfo = selectedCar
-                          ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`
-                          : "vehicle";
-                        const message = `Hi! I'm interested in getting a FOB price quote for this ${carInfo}.`;
-                        const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
-                          message
-                        )}`;
-                        window.open(whatsappUrl, "_blank");
-                      }
+                      // Redirect to WhatsApp for price quote
+                      setSelectedCar(null);
+                      const carInfo = selectedCar
+                        ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`
+                        : "vehicle";
+                      const message = `Hi! I'm interested in getting a FOB price quote for this ${carInfo}.`;
+                      const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
+                        message
+                      )}`;
+                      window.open(whatsappUrl, "_blank");
                     }}
                     className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
                   >
-                    Get FOB Price Quote
+                    {t("getFOBPriceQuote")}
                   </Button>
                 </div>
               </div>

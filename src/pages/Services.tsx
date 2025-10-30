@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Car,
   CreditCard,
@@ -12,97 +13,96 @@ import {
 } from "lucide-react";
 
 export default function Services() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900">
-            Complete Automotive Solutions
+            {t("completeAutomotiveSolutions")}
             <span className="text-emerald-600"></span>
           </h1>
-          <p className="mt-4 text-xl text-gray-600">
-            From sales to service, we provide comprehensive automotive solutions
-            designed to exceed your expectations at every step of your journey.
-          </p>
+          <p className="mt-4 text-xl text-gray-600">{t("servicesSubtitle")}</p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon={<Car className="h-6 w-6 text-emerald-600" />}
-            label="Best Selection"
-            title="Car Sales"
+            label={t("bestSelection")}
+            title={t("carSales")}
             points={[
-              "Certified Pre-Owned",
-              "New Vehicle Sales",
-              "Trade-In Evaluations",
-              "Vehicle History Reports",
+              t("certifiedPreOwned"),
+              t("newVehicleSales"),
+              t("tradeInEvaluations"),
+              t("vehicleHistoryReports"),
             ]}
             link="/services/car-sales"
           />
 
           <ServiceCard
             icon={<CreditCard className="h-6 w-6 text-emerald-600" />}
-            label="Easy Approval"
-            title="Financing Solutions"
+            label={t("easyApproval")}
+            title={t("financingSolutions")}
             points={[
-              "Competitive Interest Rates",
-              "Lease Options",
-              "Credit Applications",
-              "Insurance Partnerships",
+              t("competitiveInterestRates"),
+              t("leaseOptions"),
+              t("creditApplications"),
+              t("insurancePartnerships"),
             ]}
             link="/services/financing"
           />
 
           <ServiceCard
             icon={<RefreshCw className="h-6 w-6 text-emerald-600" />}
-            label="Best Value"
-            title="Trade-In Program"
+            label={t("bestValue")}
+            title={t("tradeInProgram")}
             points={[
-              "Fair Market Valuations",
-              "Instant Appraisals",
-              "Hassle-Free Process",
-              "Same-Day Transactions",
+              t("fairMarketValuations"),
+              t("instantAppraisals"),
+              t("hassleFreeProcess"),
+              t("sameDayTransactions"),
             ]}
             link="/services/trade-in"
           />
 
           <ServiceCard
             icon={<Wrench className="h-6 w-6 text-emerald-600" />}
-            label="Expert Care"
-            title="Maintenance & Repairs"
+            label={t("expertCare")}
+            title={t("maintenanceRepairs")}
             points={[
-              "OEM Parts & Fluids",
-              "Scheduled Services",
-              "Diagnostics & Repairs",
-              "Detailing Packages",
+              t("oemPartsFluids"),
+              t("scheduledServices"),
+              t("diagnosticsRepairs"),
+              t("detailingPackages"),
             ]}
             link="/services/maintenance"
           />
 
           <ServiceCard
             icon={<ShieldCheck className="h-6 w-6 text-emerald-600" />}
-            label="Peace of Mind"
-            title="Warranty & Protection"
+            label={t("peaceOfMind")}
+            title={t("warrantyProtection")}
             points={[
-              "Extended Warranties",
-              "Roadside Assistance",
-              "Gap & Tire Protection",
-              "Claims Support",
+              t("extendedWarranties"),
+              t("roadsideAssistance"),
+              t("gapTireProtection"),
+              t("claimsSupport"),
             ]}
             link="/services/warranty"
           />
 
           <ServiceCard
             icon={<Car className="h-6 w-6 text-emerald-600" />}
-            label="Convenience"
-            title="Test Drives"
+            label={t("convenience")}
+            title={t("testDrives")}
             points={[
-              "Flexible Scheduling",
-              "Home/Office Visits",
-              "Multiple Routes",
-              "Expert Guidance",
+              t("flexibleScheduling"),
+              t("homeOfficeVisits"),
+              t("multipleRoutes"),
+              t("expertGuidance"),
             ]}
             link="/services/test-drive"
           />

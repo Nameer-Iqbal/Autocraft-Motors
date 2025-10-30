@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   MapPin,
   Phone,
@@ -17,45 +18,45 @@ import {
 import type { ReactNode } from "react";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900">
-            Get in Touch<span className="text-emerald-600"></span>
+            {t("getInTouch")}
+            <span className="text-emerald-600"></span>
           </h1>
-          <p className="mt-4 text-xl text-gray-600">
-            Ready to find your perfect vehicle? Our team is here to help at
-            every step.
-          </p>
+          <p className="mt-4 text-xl text-gray-600">{t("contactSubtitle")}</p>
         </div>
 
         {/* Info cards */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <InfoCard
             icon={<MapPin className="h-6 w-6 text-emerald-600" />}
-            title="Visit Our Showroom"
-            primary="Ras Al Khor Industrial Area 3, Ducumz Show Room No 94, Dubai, UAE"
-            secondary="Our state-of-the-art showroom features the latest models."
+            title={t("visitOurShowroom")}
+            primary={t("showroomAddress")}
+            secondary={t("showroomDescription")}
           />
           <InfoCard
             icon={<Phone className="h-6 w-6 text-emerald-600" />}
-            title="Call Us"
-            primary="+971 52 482 5533"
-            secondary="Speak directly with our automotive experts."
+            title={t("callUs")}
+            primary={t("phoneNumber")}
+            secondary={t("callUsDescription")}
           />
           <InfoCard
             icon={<Mail className="h-6 w-6 text-emerald-600" />}
-            title="Email Us"
-            primary="sales@greenwaymotors.ae"
-            secondary="Get detailed info about any vehicle."
+            title={t("emailUs")}
+            primary={t("emailAddress")}
+            secondary={t("emailUsDescription")}
           />
           <InfoCard
             icon={<Clock className="h-6 w-6 text-emerald-600" />}
-            title="Business Hours"
-            primary="Mon - Sat: 10am - 8pm"
-            secondary="Extended hours for your convenience."
+            title={t("businessHours")}
+            primary={t("businessHoursTime")}
+            secondary={t("businessHoursDescription")}
           />
         </div>
 
@@ -65,28 +66,28 @@ export default function Contact() {
           <Card className="lg:col-span-2 rounded-2xl border border-gray-200 bg-white shadow-sm">
             <CardContent className="p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Send us a Message
+                {t("sendUsAMessage")}
               </h2>
 
               <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
-                  placeholder="Full name"
+                  placeholder={t("fullName")}
                   className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
                              focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                 />
                 <Input
                   type="email"
-                  placeholder="Email address"
+                  placeholder={t("emailAddressPlaceholder")}
                   className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
                              focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                 />
                 <Input
-                  placeholder="Phone (optional)"
+                  placeholder={t("phoneOptional")}
                   className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
                              focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                 />
                 <Input
-                  placeholder="Subject"
+                  placeholder={t("subject")}
                   className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
                              focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                 />
@@ -94,7 +95,7 @@ export default function Contact() {
                 <div className="md:col-span-2">
                   <Textarea
                     rows={6}
-                    placeholder="Your message…"
+                    placeholder={t("yourMessage")}
                     className="bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400
                                focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                   />
@@ -102,7 +103,7 @@ export default function Contact() {
 
                 <div className="md:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
                   <Button className="bg-emerald-600 text-white hover:bg-emerald-700">
-                    Send Message
+                    {t("sendMessage")}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
@@ -114,7 +115,7 @@ export default function Contact() {
           <Card className="rounded-2xl border border-gray-200 bg-white shadow-sm">
             <CardContent className="p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Quick Actions
+                {t("quickActions")}
               </h2>
               <div className="space-y-3">
                 <Button
@@ -126,7 +127,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Get Directions
+                    {t("getDirections")}
                     <Navigation className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
@@ -136,16 +137,13 @@ export default function Contact() {
                   asChild
                 >
                   <a href="mailto:sales@greenwaymotors.ae">
-                    Email Us
+                    {t("emailUsButton")}
                     <Mail className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
               </div>
 
-              <p className="mt-6 text-sm text-gray-600">
-                Prefer to chat later? Send your message and our team will reach
-                out within one business day.
-              </p>
+              <p className="mt-6 text-sm text-gray-600">{t("chatLaterText")}</p>
             </CardContent>
           </Card>
         </div>

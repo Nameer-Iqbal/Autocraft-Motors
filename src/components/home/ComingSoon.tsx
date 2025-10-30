@@ -1,6 +1,9 @@
 import { Clock } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ComingSoon() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -11,18 +14,17 @@ export default function ComingSoon() {
             </div>
 
             <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
-              Coming Soon
+              {t("comingSoon")}
             </h2>
 
             <p className="text-lg text-gray-600 max-w-2xl">
-              We're working on adding exciting new vehicles to our inventory.
-              Check back soon to see our latest additions!
+              {t("comingSoonText")}
+              <br />
+              {t("comingSoonSubtext")}
             </p>
 
             <div className="mt-8 pt-6 border-t border-gray-200 w-full">
-              <p className="text-sm text-gray-500">
-                Stay tuned for updates on our newest arrivals
-              </p>
+              <p className="text-sm text-gray-500">{t("stayTuned")}</p>
             </div>
           </div>
         </div>

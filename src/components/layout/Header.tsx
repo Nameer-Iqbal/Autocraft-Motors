@@ -4,23 +4,25 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, LogOut, UserCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 
 // 1) ⬇️ Import your logo here
 import logo from "@/assets/elite-motors-logo.jpg"; // <- change to your file
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Inventory", href: "/inventory" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "home", href: "/" },
+  { name: "inventory", href: "/inventory" },
+  { name: "services", href: "/services" },
+  { name: "about", href: "/about" },
+  { name: "contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { isAuthenticated, user, logout } = useAuth();
+  const { t } = useLanguage();
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur">
@@ -64,7 +66,7 @@ export default function Header() {
                     : "text-white/80 hover:text-emerald-400"
                 )}
               >
-                {item.name}
+                {t(item.name)}
               </Link>
             );
           })}
@@ -88,25 +90,10 @@ export default function Header() {
                 className="bg-red-600 text-white hover:bg-red-700 transition-colors h-8 px-2 text-sm whitespace-nowrap flex items-center justify-center gap-1"
               >
                 <LogOut className="h-4 w-4" />
-                <span>Logout</span>
+                <span>{t("logout")}</span>
               </Button>
             </div>
-          ) : (
-            <>
-              <Button
-                asChild
-                className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors h-8 px-3 text-sm"
-              >
-                <Link to="/login">Sign In</Link>
-              </Button>
-              <Button
-                asChild
-                className="bg-emerald-600 text-white hover:bg-emerald-700 transition-colors h-8 px-3 text-sm"
-              >
-                <Link to="/signup">Sign Up</Link>
-              </Button>
-            </>
-          )}
+          ) : null}
           <LanguageSelector />
         </div>
       </nav>
@@ -150,7 +137,7 @@ export default function Header() {
                         : "text-white/90 hover:text-emerald-400 hover:bg-white/5"
                     )}
                   >
-                    {item.name}
+                    {t(item.name)}
                   </Link>
                 ))}
               </div>
@@ -179,27 +166,10 @@ export default function Header() {
                       className="w-full bg-red-600 text-white hover:bg-red-700 h-8 text-sm"
                     >
                       <LogOut className="mr-2 h-4 w-4" />
-                      Logout
+                      {t("logout")}
                     </Button>
                   </div>
-                ) : (
-                  <div className="grid grid-cols-2 gap-3">
-                    <Button
-                      asChild
-                      className="bg-white text-emerald-600 border border-emerald-600 hover:bg-emerald-600 hover:text-white h-8 text-sm"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <Link to="/login">Sign In</Link>
-                    </Button>
-                    <Button
-                      asChild
-                      className="bg-emerald-600 text-white hover:bg-emerald-700 h-8 text-sm"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <Link to="/signup">Sign Up</Link>
-                    </Button>
-                  </div>
-                )}
+                ) : null}
               </div>
             </div>
           </div>

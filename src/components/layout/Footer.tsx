@@ -8,6 +8,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 // ⬇️ import your logo (same file you used in the header)
 import logo from "@/assets/elite-motors-logo.jpg";
 
@@ -25,18 +26,18 @@ const TikTok = ({ className }: { className?: string }) => (
 
 const navigation = {
   main: [
-    { name: "Home", href: "/" },
-    { name: "Inventory", href: "/inventory" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "home", href: "/" },
+    { name: "inventory", href: "/inventory" },
+    { name: "services", href: "/services" },
+    { name: "about", href: "/about" },
+    { name: "contact", href: "/contact" },
   ],
   services: [
-    { name: "Car Sales", href: "/services" },
-    { name: "Financing", href: "/services" },
-    { name: "Trade-in", href: "/services" },
-    { name: "Maintenance", href: "/services" },
-    { name: "Test Drives", href: "/services" },
+    { name: "carSales", href: "/services" },
+    { name: "financingSolutions", href: "/services" },
+    { name: "tradeInProgram", href: "/services" },
+    { name: "maintenanceRepairs", href: "/services" },
+    { name: "testDrives", href: "/services" },
   ],
   social: [
     {
@@ -63,6 +64,8 @@ const navigation = {
 };
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-black/90 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
@@ -106,7 +109,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="ml-12">
             <h3 className="text-sm font-semibold text-white mb-2">
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-1.5">
               {navigation.main.map((item) => (
@@ -115,7 +118,7 @@ export default function Footer() {
                     to={item.href}
                     className="text-sm text-white/70 hover:text-emerald-400 transition-colors"
                   >
-                    {item.name}
+                    {t(item.name)}
                   </Link>
                 </li>
               ))}
@@ -125,12 +128,12 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-sm font-semibold text-white mb-2">
-              Our Services
+              {t("ourServices")}
             </h3>
             <ul className="space-y-1.5">
               {navigation.services.map((item) => (
                 <li key={item.name}>
-                  <span className="text-sm text-white/70">{item.name}</span>
+                  <span className="text-sm text-white/70">{t(item.name)}</span>
                 </li>
               ))}
             </ul>
@@ -139,17 +142,14 @@ export default function Footer() {
           {/* Newsletter + Social */}
           <div>
             <h3 className="text-sm font-semibold text-white mb-2">
-              Stay Connected
+              {t("stayConnected")}
             </h3>
-            <p className="text-sm text-white/70 mb-3">
-              Subscribe to our newsletter for the latest updates on new arrivals
-              and exclusive offers.
-            </p>
+            <p className="text-sm text-white/70 mb-3">{t("newsletterText")}</p>
 
             <div className="flex gap-2 mb-3">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t("enterEmail")}
                 className="flex-1 px-3 py-2 text-sm bg-white/5 text-white placeholder:text-white/50
                            border border-white/10 rounded-md outline-none
                            focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -158,7 +158,7 @@ export default function Footer() {
                 size="sm"
                 className="bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm"
               >
-                Subscribe
+                {t("subscribe")}
               </Button>
             </div>
 
@@ -179,9 +179,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-sm text-white/60">
-              © 2005 Greenway Motors. All rights reserved.
-            </p>
+            <p className="text-sm text-white/60">{t("copyright")}</p>
             <div className="flex gap-6 mt-4 sm:mt-0"></div>
           </div>
         </div>
