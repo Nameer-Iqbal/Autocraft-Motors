@@ -26,7 +26,6 @@ export default function LanguageSelector() {
   const languages = [
     { code: "en" as const, label: "English", flag: "🇺🇸" },
     { code: "ar" as const, label: "العربية", flag: "🇸🇦" },
-    { code: "ur" as const, label: "اردو", flag: "🇵🇰" },
   ];
 
   const currentLanguage = languages.find((lang) => lang.code === language);
@@ -45,7 +44,7 @@ export default function LanguageSelector() {
       {isOpen && (
         <div
           className={`absolute mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 ${
-            language === "ar" || language === "ur" ? "left-0" : "right-0"
+            language === "ar" ? "left-0" : "right-0"
           }`}
         >
           {languages.map((lang) => (
@@ -56,9 +55,7 @@ export default function LanguageSelector() {
                 setIsOpen(false);
               }}
               className={`w-full px-4 py-2 ${
-                language === "ar" || language === "ur"
-                  ? "text-right"
-                  : "text-left"
+                language === "ar" ? "text-right" : "text-left"
               } hover:bg-gray-100 transition-colors flex items-center gap-3 ${
                 language === lang.code
                   ? "bg-emerald-50 text-emerald-600"
@@ -70,9 +67,7 @@ export default function LanguageSelector() {
               {language === lang.code && (
                 <span
                   className={`text-emerald-600 ${
-                    language === "ar" || language === "ur"
-                      ? "mr-auto"
-                      : "ml-auto"
+                    language === "ar" ? "mr-auto" : "ml-auto"
                   }`}
                 >
                   ✓

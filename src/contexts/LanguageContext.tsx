@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-type Language = "en" | "ar" | "ur";
+type Language = "en" | "ar";
 
 interface LanguageContextType {
   language: Language;
@@ -209,7 +209,6 @@ const translations: Record<Language, Record<string, string>> = {
     language: "اللغة",
     english: "English",
     arabic: "العربية",
-    urdu: "اردو",
     // Footer
     quickLinks: "روابط سريعة",
     ourServices: "خدماتنا",
@@ -362,179 +361,6 @@ const translations: Record<Language, Record<string, string>> = {
     chatLaterText:
       "تفضل الدردشة لاحقًا؟ أرسل رسالتك وسيتواصل فريقنا معك خلال يوم عمل واحد.",
   },
-  ur: {
-    // Navigation
-    home: "ہوم",
-    inventory: "موجودہ گاڑیاں",
-    services: "خدمات",
-    about: "ہمارے بارے میں",
-    contact: "رابطہ",
-    // Auth
-    signIn: "لاگ ان",
-    signUp: "اکاؤنٹ بنائیں",
-    logout: "لاگ آؤٹ",
-    profile: "پروفائل",
-    // Language selector
-    language: "زبان",
-    english: "English",
-    arabic: "العربية",
-    urdu: "اردو",
-    // Footer
-    quickLinks: "فوری لنکس",
-    ourServices: "ہماری خدمات",
-    stayConnected: "جڑے رہیں",
-    subscribe: "سبسکرائب کریں",
-    enterEmail: "اپنا ای میل درج کریں",
-    newsletterText:
-      "نئی گاڑیوں اور خصوصی پیشکشوں کی تازہ ترین معلومات کے لیے ہمارے نیوز لیٹر کو سبسکرائب کریں۔",
-    copyright: "© 2005 Greenway Motors. جملہ حقوق محفوظ ہیں۔",
-    // Hero Section
-    premiumExcellence: "پریمیم آٹوموٹیو ایکسیلنس",
-    heroTitle: "Greenway Motors",
-    heroSubtitle:
-      "Greenway Motors پر، ہم جاپان اور متحدہ عرب امارات سے پریمیم گاڑیوں کو افریقہ کے مارکیٹوں میں برآمد کرنے میں مہارت رکھتے ہیں۔ شفاف قیمتوں، وسیع انتخاب، اور قابل اعتماد عالمی لاجسٹکس کے ساتھ، ہم یقینی بناتے ہیں کہ ہر گاہک ایک بے عیب اور اطمینان بخش کار خریدنے کا تجربہ حاصل کرے — خواہ وہ دنیا کے کسی بھی حصے میں ہوں۔",
-    viewInventory: "موجودہ گاڑیاں دیکھیں",
-    aboutUs: "ہمارے بارے میں",
-    customerRating: "کسٹمر ریٹنگ",
-    happyCustomers: "خوش گاہکوں",
-    yearsExperience: "سال کا تجربہ",
-    // Coming Soon
-    comingSoon: "جلد آرہا ہے",
-    comingSoonText:
-      "ہم اپنے موجودہ ذخیرے میں دلچسپ نئی گاڑیاں شامل کرنے پر کام کر رہے ہیں۔",
-    comingSoonSubtext: "ہماری تازہ ترین اضافات دیکھنے کے لیے جلد واپس آئیں!",
-    stayTuned: "اپنے نئے آرائیولز کی اپ ڈیٹس کے لیے ہمارے ساتھ جڑے رہیں",
-    // Inventory
-    ourInventory: "ہمارا موجودہ ذخیرہ",
-    inventorySubtitle:
-      "پریمیم گاڑیوں کے اپنے مکمل مجموعے کو دریافت کریں۔ ہر گاڑی کی احتیاط سے جانچ کی جاتی ہے اور ہمارے اعلیٰ ترین معیارات کو پورا کرنے کے لیے تصدیق کی جاتی ہے۔",
-    searchCars: "گاڑیاں تلاش کریں...",
-    allBrands: "تمام برانڈز",
-    allTypes: "تمام قسمیں",
-    allDriveTypes: "تمام ڈرائیو اقسام",
-    sortBy: "ترتیب دیں",
-    name: "نام",
-    priceLowToHigh: "قیمت: کم سے زیادہ",
-    priceHighToLow: "قیمت: زیادہ سے کم",
-    year: "سال",
-    brand: "برانڈ",
-    showing: "دکھا رہا ہے",
-    of: "از",
-    vehicles: "گاڑیاں",
-    viewMore: "مزید دیکھیں",
-    noVehiclesFound: "کوئی گاڑی نہیں ملی",
-    tryAdjustingFilters:
-      "اپنے تلاش کے معیار یا فلٹرز کو ایڈجسٹ کرنے کی کوشش کریں۔",
-    previous: "پچھلا",
-    next: "اگلا",
-    fuelType: "ایندھن کی قسم",
-    transmission: "ٹرانسمیشن",
-    driveType: "ڈرائیو کی قسم",
-    vehicleType: "گاڑی کی قسم",
-    features: "خصوصیات",
-    description: "تفصیل",
-    contactUs: "ہم سے رابطہ کریں",
-    getFOBPriceQuote: "FOB قیمت کا تخمینہ حاصل کریں",
-    carDescription1: "یہ",
-    carDescription2: "پریمیم ہے",
-    carDescription3: "بہترین",
-    carDescription4: "کارکردگی اور استحکام کے ساتھ۔",
-    carDescription5:
-      "اعلیٰ ایندھن کی کارکردگی کے لیے جدید ہائبرڈ ٹیکنالوجی کی خصوصیات۔",
-    carDescription6: "یہ",
-    carDescription7: "ٹرانسمیشن ہموار ڈرائیونگ کو یقینی بناتی ہے، جبکہ",
-    carDescription8: "کنفیگریشن بہترین کنٹرول اور ہینڈلنگ فراہم کرتی ہے۔",
-    // Services
-    completeAutomotiveSolutions: "مکمل آٹوموٹیو حل",
-    servicesSubtitle:
-      "سیرز سے خدمات تک، ہم جامع آٹوموٹیو حل فراہم کرتے ہیں جو آپ کی توقع سے تجاوز کرنے کے لیے ڈیزائن کیے گئے ہیں۔",
-    bestSelection: "بہترین انتخاب",
-    carSales: "کار سیلز",
-    certifiedPreOwned: "سرٹیفائیڈ پری-اونڈ",
-    newVehicleSales: "نئی گاڑیوں کی فروخت",
-    tradeInEvaluations: "ٹریڈ-ان تشخیصات",
-    vehicleHistoryReports: "گاڑی کی تاریخ کی رپورٹس",
-    easyApproval: "آسان منظوری",
-    financingSolutions: "فنانسنگ حل",
-    competitiveInterestRates: "مسابقتی سود کی شرحیں",
-    leaseOptions: "لیز اختیارات",
-    creditApplications: "کریڈٹ درخواستیں",
-    insurancePartnerships: "انشورنس پارٹنرشپس",
-    bestValue: "بہترین قیمت",
-    tradeInProgram: "ٹریڈ-ان پروگرام",
-    fairMarketValuations: "منصفانہ مارکیٹ تشخیصات",
-    instantAppraisals: "فوری تشخیصات",
-    hassleFreeProcess: "بنا پریشانی کے عمل",
-    sameDayTransactions: "اسی دن کی لین دین",
-    expertCare: "ماہر نگہداشت",
-    maintenanceRepairs: "ڈھانچہ اور مرمت",
-    oemPartsFluids: "OEM پارٹس اور سیال",
-    scheduledServices: "طے شدہ خدمات",
-    diagnosticsRepairs: "تشخیص اور مرمت",
-    detailingPackages: "تفصیل پیکیجز",
-    peaceOfMind: "اطمینان",
-    warrantyProtection: "وارنٹی اور تحفظ",
-    extendedWarranties: "توسیع شدہ ضمانتیں",
-    roadsideAssistance: "سڑک کی مدد",
-    gapTireProtection: "گیپ اور ٹائر کی حفاظت",
-    claimsSupport: "دعووں کی مدد",
-    convenience: "سہولت",
-    testDrives: "ٹیسٹ ڈرائیوز",
-    flexibleScheduling: "لچکدار شیڈولنگ",
-    homeOfficeVisits: "ہوم/آفس ملاقاتیں",
-    multipleRoutes: "متعدد راستے",
-    expertGuidance: "ماہر رہنمائی",
-    // About
-    aboutGreenwayMotors: "Greenway Motors کے بارے میں",
-    aboutSubtitle:
-      "20 سے زیادہ سالوں سے، Greenway Motors عیش و آرام اور پریمیم گاڑیوں کے لیے اعلیٰ ترین منزل رہا ہے — آٹوموٹیو سیلز اور خدمات میں ایکسیلنس کا معیار قائم کر رہا ہے۔",
-    yearsInBusiness: "کاروبار میں سال",
-    vehiclesSold: "فروخت شدہ گاڑیاں",
-    ourStory: "ہماری کہانی",
-    storyText1:
-      "2005 میں قائم کیا گیا، Greenway Motors نے ایک واضح وژن کے ساتھ آغاز کیا — عیش و آرام، معیار اور بھروسے کے ذریعے کار خریدنے کے تجربے کو دوبارہ تعریف کرنا۔ جو ایک خاندانی اقدام کے طور پر شروع ہوا تھا وہ جاپان، پاکستان، افریقہ اور UAE میں کارروائیوں کے ساتھ ایک عالمی سطح پر تسلیم شدہ ڈیلرشپ میں تیار ہوا ہے۔",
-    storyText2:
-      "پریمیم گاڑیوں کی برآمد میں خصوصیت، ہم پوری دنیا کے صارفین کو بہترین آٹوموبائلز سے جوڑنے پر فخر کرتے ہیں۔ دیانتداری، اعتماد اور کسٹمر کی اطمینان سے رہنمائی کرتے ہوئے، Greenway Motors عالمی آٹوموٹیو مارکیٹ میں برتری کی طرف بڑھتی رہتی ہے۔",
-    ourMission: "ہمارا مشن",
-    missionText:
-      "Greenway Motors پر، ہمارا مشن شفاف اور مسابقتی قیمتوں کے ذریعے پریمیم گاڑیوں تک رسائی ممکن بنانا ہے جبکہ ہموار عالمی برآمدات کو یقینی بناتے ہوئے۔ ہم ہر قدم پر — انتخاب سے شپمنٹ اور اس سے آگے تک — بے مثال اعتماد، غیر معمولی خدمات اور مکمل اطمینان فراہم کرکے اپنے صارفین کے ساتھ دیرپا تعلقات قائم کرنے کی کوشش کرتے ہیں۔",
-    integrity: "دیانتداری",
-    integrityText: "ایماندارانہ رہنمائی اور شفاف عمل — ہمیشہ۔",
-    quality: "معیار",
-    qualityText: "سرٹیفائیڈ گاڑیاں، سخت معائنے، OEM دیکھ بھال۔",
-    service: "خدمت",
-    serviceText: "خریدنے سے پہلے اور بعد میں ذاتی توجہ۔",
-    // Contact
-    getInTouch: "رابطہ کریں",
-    contactSubtitle:
-      "اپنی مثالی گاڑی تلاش کرنے کے لیے تیار ہیں؟ ہماری ٹیم ہر قدم پر مدد کے لیے یہاں ہے۔",
-    visitOurShowroom: "ہماری شو روم دیکھیں",
-    showroomAddress:
-      "راس الخور انڈسٹریل ایریا 3، ڈوکمز شو روم نمبر 94، دبئی، UAE",
-    showroomDescription:
-      "ہماری جدید ترین شو روم میں تازہ ترین ماڈلز کی خصوصیات ہیں۔",
-    callUs: "ہمیں کال کریں",
-    phoneNumber: "+971 52 482 5533",
-    callUsDescription: "ہمارے آٹوموٹیو ماہرین سے براہ راست بات کریں۔",
-    emailUs: "ہمیں ای میل کریں",
-    emailAddress: "sales@greenwaymotors.ae",
-    emailUsDescription: "کسی بھی گاڑی کے بارے میں تفصیلی معلومات حاصل کریں۔",
-    businessHours: "کاروباری اوقات",
-    businessHoursTime: "سوموار - ہفتہ: صبح 10 بجے - شام 8 بجے",
-    businessHoursDescription: "آپ کی سہولت کے لیے توسیع شدہ اوقات۔",
-    sendUsAMessage: "ہمیں پیغام بھیجیں",
-    fullName: "پورا نام",
-    emailAddressPlaceholder: "ای میل ایڈریس",
-    phoneOptional: "فون (اختیاری)",
-    subject: "موضوع",
-    yourMessage: "آپ کا پیغام…",
-    sendMessage: "پیغام بھیجیں",
-    quickActions: "فوری کارروائی",
-    getDirections: "ہدایات حاصل کریں",
-    emailUsButton: "ہمیں ای میل کریں",
-    chatLaterText:
-      "بعد میں چاٹ کرنا پسند کریں گے؟ اپنا پیغام بھیجیں اور ہماری ٹیم ایک کاروباری دن کے اندر رابطہ کرے گی۔",
-  },
 };
 
 interface LanguageProviderProps {
@@ -551,29 +377,25 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
     const savedLanguage = localStorage.getItem(
       "preferred_language"
     ) as Language;
-    if (
-      savedLanguage &&
-      (savedLanguage === "en" ||
-        savedLanguage === "ar" ||
-        savedLanguage === "ur")
-    ) {
+    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "ar")) {
       setLanguageState(savedLanguage);
+    } else if (savedLanguage) {
+      // If saved language is not valid (e.g., "ur"), reset to English
+      localStorage.setItem("preferred_language", "en");
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("preferred_language", lang);
-    // Toggle dir attribute on document element (RTL for Arabic and Urdu)
-    document.documentElement.dir =
-      lang === "ar" || lang === "ur" ? "rtl" : "ltr";
+    // Toggle dir attribute on document element (RTL for Arabic)
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = lang;
   };
 
   // Apply direction on mount
   useEffect(() => {
-    document.documentElement.dir =
-      language === "ar" || language === "ur" ? "rtl" : "ltr";
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = language;
   }, [language]);
 
