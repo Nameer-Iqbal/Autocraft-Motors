@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Input } from "@/components/ui/input";
@@ -45,9 +45,19 @@ export default function Inventory() {
   const [selectedCar, setSelectedCar] = useState<CarType | null>(null);
   const carsPerPage = 6;
 
-  const brands = Array.from(new Set(cars.map((car) => car.brand)));
-  const types = Array.from(new Set(cars.map((car) => car.type)));
-  const driveTypes = Array.from(new Set(cars.map((car) => car.driveType)));
+  // Memoize brands, types, and driveTypes to prevent recalculation
+  const brands = useMemo(
+    () => Array.from(new Set(cars.map((car) => car.brand))),
+    []
+  );
+  const types = useMemo(
+    () => Array.from(new Set(cars.map((car) => car.type))),
+    []
+  );
+  const driveTypes = useMemo(
+    () => Array.from(new Set(cars.map((car) => car.driveType))),
+    []
+  );
 
   const filteredAndSortedCars = useMemo(() => {
     let filtered = cars.filter((car) => {
@@ -84,16 +94,52 @@ export default function Inventory() {
     return filtered;
   }, [searchTerm, sortBy, filterBrand, filterType, filterDriveType]);
 
-  // Pagination logic
-  const totalPages = Math.ceil(filteredAndSortedCars.length / carsPerPage);
-  const startIndex = (currentPage - 1) * carsPerPage;
-  const endIndex = startIndex + carsPerPage;
-  const currentCars = filteredAndSortedCars.slice(startIndex, endIndex);
-
   // Reset to page 1 when filters change
-  useMemo(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortBy, filterBrand, filterType, filterDriveType]);
+
+  // Memoize pagination calculations
+  const paginationData = useMemo(() => {
+    const total = Math.ceil(filteredAndSortedCars.length / carsPerPage);
+    const start = (currentPage - 1) * carsPerPage;
+    const end = start + carsPerPage;
+    return { totalPages: total, startIndex: start, endIndex: end };
+  }, [filteredAndSortedCars.length, currentPage, carsPerPage]);
+
+  const currentCars = useMemo(
+    () =>
+      filteredAndSortedCars.slice(
+        paginationData.startIndex,
+        paginationData.endIndex
+      ),
+    [filteredAndSortedCars, paginationData.startIndex, paginationData.endIndex]
+  );
+
+  // Memoize callbacks
+  const handleCarClick = useCallback((car: CarType) => {
+    setSelectedCar(car);
+  }, []);
+
+  const handleCloseDialog = useCallback(() => {
+    setSelectedCar(null);
+  }, []);
+
+  const handleContactClick = useCallback(() => {
+    setSelectedCar(null);
+    navigate("/contact");
+  }, [navigate]);
+
+  const handleWhatsAppClick = useCallback(() => {
+    if (!selectedCar) return;
+    setSelectedCar(null);
+    const carInfo = `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`;
+    const message = `Hi! I'm interested in getting a CIF price quote for this ${carInfo}.`;
+    const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  }, [selectedCar]);
 
   return (
     <div className="min-h-screen py-16 bg-white">
@@ -190,9 +236,9 @@ export default function Inventory() {
         {/* Results Count */}
         <div className="mb-8">
           <p className="text-gray-500">
-            {t("showing")} {startIndex + 1}-
-            {Math.min(endIndex, filteredAndSortedCars.length)} {t("of")}{" "}
-            {filteredAndSortedCars.length} {t("vehicles")}
+            {t("showing")} {paginationData.startIndex + 1}-
+            {Math.min(paginationData.endIndex, filteredAndSortedCars.length)}{" "}
+            {t("of")} {filteredAndSortedCars.length} {t("vehicles")}
           </p>
         </div>
 
@@ -209,6 +255,8 @@ export default function Inventory() {
                   src={car.image}
                   alt={car.name}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 {/* Year (neutral, no hover color) */}
@@ -260,7 +308,7 @@ export default function Inventory() {
                   </div>
                   <Button
                     size="sm"
-                    onClick={() => setSelectedCar(car)}
+                    onClick={() => handleCarClick(car)}
                     className="w-full bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
                   >
                     {t("viewMore")}
@@ -283,7 +331,7 @@ export default function Inventory() {
         ) : (
           <>
             {/* Pagination Controls */}
-            {totalPages > 1 && (
+            {paginationData.totalPages > 1 && (
               <div className="mt-12 flex items-center justify-center gap-4">
                 <Button
                   variant="outline"
@@ -296,30 +344,33 @@ export default function Inventory() {
                 </Button>
 
                 <div className="flex items-center gap-2">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <Button
-                        key={page}
-                        variant="outline"
-                        onClick={() => setCurrentPage(page)}
-                        className={`h-8 w-8 text-sm border-gray-300 ${
-                          currentPage === page
-                            ? "bg-black text-white"
-                            : "bg-emerald-600 text-white"
-                        }`}
-                      >
-                        {page}
-                      </Button>
-                    )
-                  )}
+                  {Array.from(
+                    { length: paginationData.totalPages },
+                    (_, i) => i + 1
+                  ).map((page) => (
+                    <Button
+                      key={page}
+                      variant="outline"
+                      onClick={() => setCurrentPage(page)}
+                      className={`h-8 w-8 text-sm border-gray-300 ${
+                        currentPage === page
+                          ? "bg-black text-white"
+                          : "bg-emerald-600 text-white"
+                      }`}
+                    >
+                      {page}
+                    </Button>
+                  ))}
                 </div>
 
                 <Button
                   variant="outline"
                   onClick={() =>
-                    setCurrentPage(Math.min(totalPages, currentPage + 1))
+                    setCurrentPage(
+                      Math.min(paginationData.totalPages, currentPage + 1)
+                    )
                   }
-                  disabled={currentPage === totalPages}
+                  disabled={currentPage === paginationData.totalPages}
                   className="flex items-center gap-1 h-8 px-3 text-sm"
                 >
                   {t("next")}
@@ -332,10 +383,7 @@ export default function Inventory() {
       </div>
 
       {/* Car Details Dialog */}
-      <Dialog
-        open={!!selectedCar}
-        onOpenChange={(open) => !open && setSelectedCar(null)}
-      >
+      <Dialog open={!!selectedCar} onOpenChange={handleCloseDialog}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white">
           {selectedCar && (
             <>
@@ -355,6 +403,8 @@ export default function Inventory() {
                     src={selectedCar.image}
                     alt={selectedCar.name}
                     className="w-full h-64 object-cover"
+                    loading="eager"
+                    decoding="async"
                   />
                 </div>
 
@@ -461,27 +511,13 @@ export default function Inventory() {
                 {/* Contact CTA */}
                 <div className="pt-4 border-t border-gray-200 flex gap-3">
                   <Button
-                    onClick={() => {
-                      setSelectedCar(null);
-                      navigate("/contact");
-                    }}
+                    onClick={handleContactClick}
                     className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
                   >
                     {t("contactUs")}
                   </Button>
                   <Button
-                    onClick={() => {
-                      // Redirect to WhatsApp for price quote
-                      setSelectedCar(null);
-                      const carInfo = selectedCar
-                        ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`
-                        : "vehicle";
-                      const message = `Hi! I'm interested in getting a CIF price quote for this ${carInfo}.`;
-                      const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
-                        message
-                      )}`;
-                      window.open(whatsappUrl, "_blank");
-                    }}
+                    onClick={handleWhatsAppClick}
                     className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
                   >
                     {t("getCIFPrice")}

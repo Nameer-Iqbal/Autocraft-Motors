@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/hero-showroom.jpg";
 
-export default function HeroSection() {
+export default memo(function HeroSection() {
   const { t } = useLanguage();
 
   return (
@@ -15,6 +16,9 @@ export default function HeroSection() {
           src={heroImage}
           alt="Luxury car showroom"
           className="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         {/* darker overlay for contrast like the green design */}
         <div className="absolute inset-0 bg-black/60" />
@@ -97,4 +101,4 @@ export default function HeroSection() {
       </div>
     </section>
   );
-}
+});
