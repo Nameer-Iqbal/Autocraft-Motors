@@ -14,7 +14,6 @@ export default memo(function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
-          alt="Luxury car showroom"
           className="w-full h-full object-cover"
           loading="eager"
           decoding="async"
