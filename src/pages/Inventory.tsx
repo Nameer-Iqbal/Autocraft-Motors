@@ -100,7 +100,7 @@ export default function Inventory() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 text-gray-900">
+          <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 text-gray-900 font-display">
             {t("ourInventory")} <span className="text-emerald-600"></span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

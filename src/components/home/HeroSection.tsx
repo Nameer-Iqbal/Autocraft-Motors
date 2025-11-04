@@ -32,7 +32,7 @@ export default function HeroSection() {
               </div>
 
               {/* Heading: white + green accent */}
-              <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight text-white">
+              <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight text-white font-display">
                 <span className="block text-emerald-500">{t("heroTitle")}</span>
               </h1>
 

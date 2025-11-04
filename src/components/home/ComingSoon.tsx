@@ -13,7 +13,7 @@ export default function ComingSoon() {
               <Clock className="h-8 w-8 text-emerald-600" />
             </div>
 
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 font-display">
               {t("comingSoon")}
             </h2>
 

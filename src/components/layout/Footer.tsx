@@ -79,7 +79,7 @@ export default function Footer() {
                 className="h-9 w-auto object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">
+                <span className="text-lg font-bold text-white font-display">
                   Greenway Motors
                 </span>
                 <span className="text-xs text-white/60">Beyond Borders</span>
