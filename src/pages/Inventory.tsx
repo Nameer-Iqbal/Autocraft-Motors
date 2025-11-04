@@ -248,8 +248,16 @@ export default function Inventory() {
                   </div>
                 </div>
 
-                {/* CTA */}
+                {/* FOB Price */}
                 <div className="mt-5 pt-5 border-t border-gray-100">
+                  <div className="mb-3">
+                    <span className="text-xs text-gray-500 uppercase tracking-wide">
+                      {t("fobPrice")}
+                    </span>
+                    <div className="text-xl font-bold text-emerald-600 mt-1">
+                      ${car.price.toLocaleString()}
+                    </div>
+                  </div>
                   <Button
                     size="sm"
                     onClick={() => setSelectedCar(car)}
@@ -350,8 +358,16 @@ export default function Inventory() {
                   />
                 </div>
 
-                {/* Year Badge */}
-                <div className="flex items-center justify-end p-4 bg-emerald-50 rounded-lg">
+                {/* Year Badge and FOB Price */}
+                <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-lg">
+                  <div>
+                    <span className="text-xs text-gray-600 uppercase tracking-wide">
+                      {t("fobPrice")}
+                    </span>
+                    <div className="text-2xl font-bold text-emerald-600 mt-1">
+                      ${selectedCar.price.toLocaleString()}
+                    </div>
+                  </div>
                   <Badge className="bg-emerald-600 text-white px-3 py-1">
                     {selectedCar.year}
                   </Badge>
@@ -460,7 +476,7 @@ export default function Inventory() {
                       const carInfo = selectedCar
                         ? `${selectedCar.brand} ${selectedCar.model} (${selectedCar.year})`
                         : "vehicle";
-                      const message = `Hi! I'm interested in getting a FOB price quote for this ${carInfo}.`;
+                      const message = `Hi! I'm interested in getting a CIF price quote for this ${carInfo}.`;
                       const whatsappUrl = `https://wa.me/971524825533?text=${encodeURIComponent(
                         message
                       )}`;
@@ -468,7 +484,7 @@ export default function Inventory() {
                     }}
                     className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
                   >
-                    {t("getFOBPriceQuote")}
+                    {t("getCIFPrice")}
                   </Button>
                 </div>
               </div>
