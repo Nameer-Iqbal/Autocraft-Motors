@@ -301,6 +301,68 @@ export const cars: Car[] = [
     driveType: "LHD",
     features: ["4 Door", "4 Seats", "123,318 KM", "Black Color"],
     featured: false
+  },
+  {
+    id: "0020",
+    name: "Mercedes E-350",
+    brand: "Mercedes-Benz",
+    model: "E-350",
+    year: 2009,
+    price: 9000,
+    image: "/src/assets/Cars/Mercedes_E_350_Black.jpg",
+    type: "Sedan",
+    fuelType: "Petrol",
+    transmission: "Automatic",
+    driveType: "LHD",
+    features: ["4 Door", "4 Seats", "84,471 KM", "3500 CC", "Black Color"],
+    featured: false
+  },
+  {
+    id: "0021",
+    name: "Suzuki",
+    brand: "Suzuki",
+    model: "Swift",
+    year: 2026,
+    price: 11000,
+    image: "/src/assets/Cars/Suzuki_Swift.jpg",
+    type: "Sedan",
+    fuelType: "Petrol",
+    transmission: "Automatic",
+    driveType: "LHD",
+    features: ["4 Door", "4 Seats", "0 KM", "1200 CC", "Brown Color"],
+    featured: false
+  },
+  {
+    id: "0022",
+    name: "Mercedes S-500",
+    brand: "Mercedes-Benz",
+    model: "S-500",
+    year: 2007,
+    price: 11000,
+    image: "/src/assets/Cars/Mercedes_S_500.jpg",
+    type: "Sedan",
+    fuelType: "Petrol",
+    transmission: "Automatic",
+    driveType: "LHD",
+    features: ["4 Door", "4 Seats", "55,023 KM", "5500 CC", "Black Color"],
+    featured: false,
+    chasisNumber: "WDD2211711A134185"
+  },
+  {
+    id: "0023",
+    name: "Toyota",
+    brand: "Toyota",
+    model: "Yaris",
+    year: 2015,
+    price: 5000,
+    image: "/src/assets/Cars/Toyota_Yaris.jpg",
+    type: "Sedan",
+    fuelType: "Petrol",
+    transmission: "Automatic",
+    driveType: "LHD",
+    features: ["4 Door", "4 Seats", "0 KM", "1500 CC", "White Color"],
+    featured: false,
+    chasisNumber: "MR2KW9F34F1089418"
   }
 ];
 
