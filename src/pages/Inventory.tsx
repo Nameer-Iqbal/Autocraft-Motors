@@ -254,17 +254,28 @@ export default function Inventory() {
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="w-full h-48 object-cover"
+                  className={`w-full h-48 object-cover ${
+                    car.soldOut ? "opacity-60 grayscale" : ""
+                  }`}
                   loading="lazy"
                   decoding="async"
                 />
 
-                {/* Year (neutral, no hover color) */}
+                {/* Year Badge */}
                 <div className="absolute top-4 left-4">
                   <Badge className="rounded-full bg-white/90 text-gray-800 border border-gray-200 px-3 py-1 text-xs cursor-default pointer-events-none">
                     {car.year}
                   </Badge>
                 </div>
+
+                {/* Sold Out Badge */}
+                {car.soldOut && (
+                  <div className="absolute top-4 right-4">
+                    <Badge className="rounded-full bg-red-600 text-white px-3 py-1 text-xs font-semibold cursor-default pointer-events-none hover:bg-red-600">
+                      {t("soldOut")}
+                    </Badge>
+                  </div>
+                )}
               </div>
 
               {/* Content */}
@@ -309,10 +320,15 @@ export default function Inventory() {
                   <Button
                     size="sm"
                     onClick={() => handleCarClick(car)}
-                    className="w-full bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                    disabled={car.soldOut}
+                    className={`w-full transition-colors shadow-sm ${
+                      car.soldOut
+                        ? "bg-gray-400 text-white cursor-not-allowed"
+                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                    }`}
                   >
-                    {t("viewMore")}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {car.soldOut ? t("soldOut") : t("viewMore")}
+                    {!car.soldOut && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </div>
               </CardContent>
@@ -418,9 +434,16 @@ export default function Inventory() {
                       ${selectedCar.price.toLocaleString()}
                     </div>
                   </div>
-                  <Badge className="bg-emerald-600 text-white px-3 py-1">
-                    {selectedCar.year}
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    {selectedCar.soldOut && (
+                      <Badge className="bg-red-600 text-white px-3 py-1 cursor-default pointer-events-none hover:bg-red-600">
+                        {t("soldOut")}
+                      </Badge>
+                    )}
+                    <Badge className="bg-emerald-600 text-white px-3 py-1">
+                      {selectedCar.year}
+                    </Badge>
+                  </div>
                 </div>
 
                 {/* Specifications Grid */}
@@ -509,20 +532,31 @@ export default function Inventory() {
                 </div>
 
                 {/* Contact CTA */}
-                <div className="pt-4 border-t border-gray-200 flex gap-3">
-                  <Button
-                    onClick={handleContactClick}
-                    className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
-                  >
-                    {t("contactUs")}
-                  </Button>
-                  <Button
-                    onClick={handleWhatsAppClick}
-                    className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
-                  >
-                    {t("getCIFPrice")}
-                  </Button>
-                </div>
+                {selectedCar.soldOut ? (
+                  <div className="pt-4 border-t border-gray-200">
+                    <Button
+                      disabled
+                      className="w-full bg-gray-400 text-white cursor-not-allowed"
+                    >
+                      {t("soldOut")}
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="pt-4 border-t border-gray-200 flex gap-3">
+                    <Button
+                      onClick={handleContactClick}
+                      className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
+                    >
+                      {t("contactUs")}
+                    </Button>
+                    <Button
+                      onClick={handleWhatsAppClick}
+                      className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
+                    >
+                      {t("getCIFPrice")}
+                    </Button>
+                  </div>
+                )}
               </div>
             </>
           )}

@@ -14,6 +14,9 @@ export interface ICar extends Document {
   driveType: string;
   features: string[];
   featured: boolean;
+  vehicleCode?: string;
+  chasisNumber?: string;
+  soldOut?: boolean;
 }
 
 const CarSchema: Schema = new Schema({
@@ -29,7 +32,10 @@ const CarSchema: Schema = new Schema({
   transmission: { type: String, required: true },
   driveType: { type: String, required: true },
   features: [{ type: String }],
-  featured: { type: Boolean, default: false }
+  featured: { type: Boolean, default: false },
+  vehicleCode: { type: String, required: false },
+  chasisNumber: { type: String, required: false },
+  soldOut: { type: Boolean, default: false }
 });
 
 export default mongoose.model<ICar>('Car', CarSchema);
