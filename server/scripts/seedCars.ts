@@ -77,7 +77,9 @@ const carsData = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "3,685 KM", "2800 CC", "Black Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0KA3CDX06800650",
+    soldOut: true
   },
   {
     id: "0006",

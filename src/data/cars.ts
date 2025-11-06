@@ -91,7 +91,9 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "3,685 KM", "2800 CC", "Black Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0KA3CDX06800650",
+    soldOut: true
   },
   {
     id: "0006",
@@ -121,7 +123,9 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "65,214 KM", "2800 CC", "White Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0KA3CD901211764",
+    soldOut: true
   },
   {
     id: "0008",
@@ -136,7 +140,9 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "43,000 KM", "2800 CC", "Grey Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0BA3CD700060560",
+    soldOut: true
   },
   {
     id: "0009",
@@ -151,7 +157,9 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "36,904 KM", "2800 CC", "Blue Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0HA3CD600719609",
+    soldOut: true
   },
   {
     id: "0010",
@@ -166,7 +174,9 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "41,197 KM", "2800 CC", "Red Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "MR0KA3CD801242939",
+    soldOut: true
   },
   {
     id: "0011",
@@ -181,13 +191,15 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "4,900 KM", "2800 CC", "Green Color"],
-    featured: true
+    featured: true,
+    chasisNumber: "MR0KA3CC101176483",
+    soldOut: true
   },
   {
     id: "0012",
     name: "Toyota",
     brand: "Toyota",
-    model: "Land Cruiser",
+    model: "Land Cruiser (Pickup)",
     year: 2023,
     price: 35000,
     image: "/src/assets/Cars/LandCruiser2023.jpg",
@@ -196,7 +208,9 @@ export const cars: Car[] = [
     transmission: "Manual",
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "4 Wheel Drive", "27,700 KM", "4500 CC", "Beige Color"],
-    featured: false
+    featured: false,
+    chasisNumber: "JTEBVL1J00B009090",
+    soldOut: true
   },
   {
     id: "0013",
