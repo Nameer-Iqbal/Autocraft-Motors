@@ -286,6 +286,21 @@ export const cars: Car[] = [
     driveType: "LHD",
     features: ["4 Door", "5 Seats", "41,000 KM", "5000 CC", "White Color"],
     featured: false
+  },
+  {
+    id: "0019",
+    name: "BMW",
+    brand: "BMW",
+    model: "X4",
+    year: 2020,
+    price: 26000,
+    image: "/src/assets/Cars/BMW_X4.jpg",
+    type: "SUV",
+    fuelType: "Petrol",
+    transmission: "Automatic",
+    driveType: "LHD",
+    features: ["4 Door", "4 Seats", "123,318 KM", "Black Color"],
+    featured: false
   }
 ];
 
