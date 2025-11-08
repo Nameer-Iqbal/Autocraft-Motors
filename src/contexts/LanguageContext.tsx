@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-type Language = "en" | "ar";
+type Language = "en" | "ar" | "sw";
 
 interface LanguageContextType {
   language: Language;
@@ -38,6 +38,7 @@ const translations: Record<Language, Record<string, string>> = {
     language: "Language",
     english: "English",
     arabic: "العربية",
+    swahili: "Swahili",
     // Footer
     quickLinks: "Quick Links",
     ourServices: "Our Services",
@@ -212,6 +213,7 @@ const translations: Record<Language, Record<string, string>> = {
     language: "اللغة",
     english: "English",
     arabic: "العربية",
+    swahili: "السواحيلية",
     // Footer
     quickLinks: "روابط سريعة",
     ourServices: "خدماتنا",
@@ -367,6 +369,181 @@ const translations: Record<Language, Record<string, string>> = {
     chatLaterText:
       "تفضل الدردشة لاحقًا؟ أرسل رسالتك وسيتواصل فريقنا معك خلال يوم عمل واحد.",
   },
+  sw: {
+    // Navigation
+    home: "Nyumbani",
+    inventory: "Orodha ya Magari",
+    services: "Huduma",
+    about: "Kuhusu Sisi",
+    contact: "Wasiliana",
+    // Auth
+    signIn: "Ingia",
+    signUp: "Jisajili",
+    logout: "Ondoka",
+    profile: "Wasifu",
+    // Language selector
+    language: "Lugha",
+    english: "Kiingereza",
+    arabic: "Kiarabu",
+    swahili: "Kiswahili",
+    // Footer
+    quickLinks: "Viungo vya Haraka",
+    ourServices: "Huduma Zetu",
+    stayConnected: "Kaa Umeunganishwa",
+    subscribe: "Jisajili",
+    enterEmail: "Weka barua pepe yako",
+    newsletterText:
+      "Jisajili kwa jarida letu upokee taarifa za hivi punde kuhusu magari mapya na ofa maalum.",
+    copyright: "© 2005 Greenway Motors. Haki zote zimehifadhiwa.",
+    // Hero Section
+    premiumExcellence: "Ubora wa Magari wa Daraja la Juu",
+    heroTitle: "Greenway Motors",
+    heroSubtitle:
+      "Greenway Motors inajishughulisha na kusafirisha magari ya kifahari kutoka Japani na UAE kwenda masoko mbalimbali barani Afrika. Kwa bei wazi, uteuzi mpana na usafirishaji unaoaminika, tunahakikisha kila mteja anapata uzoefu rahisi na wa kuridhisha wa kununua gari — popote walipo ulimwenguni.",
+    viewInventory: "Tazama Orodha",
+    aboutUs: "Kuhusu Sisi",
+    customerRating: "Ukadiriaji wa Wateja",
+    happyCustomers: "Wateja Walioridhika",
+    yearsExperience: "Miaka ya Uzoefu",
+    // Coming Soon
+    comingSoon: "Inakuja Hivi Karibuni",
+    comingSoonText:
+      "Tunafanya kazi kuongeza magari mapya ya kuvutia katika orodha yetu.",
+    comingSoonSubtext: "Rudi hivi karibuni kuona nyongeza zetu za karibuni!",
+    stayTuned: "Endelea kufuatilia masasisho ya magari mapya yanayowasili",
+    // Inventory
+    ourInventory: "Orodha Yetu ya Magari",
+    inventorySubtitle:
+      "Gundua mkusanyiko wetu kamili wa magari ya kifahari. Kila gari hukaguliwa kwa uangalifu na kuthibitishwa ili kufikia viwango vyetu vya juu.",
+    searchCars: "Tafuta magari...",
+    allBrands: "Chapa Zote",
+    allTypes: "Aina Zote",
+    allDriveTypes: "Aina Zote za Uendeshaji",
+    sortBy: "Panga kwa",
+    name: "Jina",
+    priceLowToHigh: "Bei: Chini hadi Juu",
+    priceHighToLow: "Bei: Juu hadi Chini",
+    year: "Mwaka",
+    brand: "Chapa",
+    showing: "Inaonyesha",
+    of: "ya",
+    vehicles: "magari",
+    viewMore: "Tazama Zaidi",
+    noVehiclesFound: "Hakuna magari yaliyopatikana",
+    tryAdjustingFilters: "Jaribu kubadilisha vigezo vya utafutaji au vichujio.",
+    previous: "Iliyotangulia",
+    next: "Inayofuata",
+    fuelType: "Aina ya Mafuta",
+    transmission: "Gia",
+    driveType: "Aina ya Uendeshaji",
+    vehicleType: "Aina ya Gari",
+    features: "Vipengele",
+    description: "Maelezo",
+    contactUs: "Wasiliana Nasi",
+    fobPrice: "Bei ya FOB",
+    getFOBPriceQuote: "Omba Nukuu ya Bei ya FOB",
+    getCIFPrice: "Omba Bei ya CIF",
+    soldOut: "Imeuzwa",
+    carDescription1: "Hii",
+    carDescription2: "ni gari la kifahari",
+    carDescription3: "lenye utendaji bora na",
+    carDescription4: "uaminifu wa juu.",
+    carDescription5:
+      "Inatumia teknolojia ya mseto ya kisasa kwa ufanisi mkubwa wa mafuta.",
+    carDescription6: "Kifaa",
+    carDescription7: "cha gia kinahakikisha uendeshaji laini, huku",
+    carDescription8: "mpangilio ukitoa udhibiti na uthabiti bora.",
+    // Services
+    completeAutomotiveSolutions: "Suluhisho Kamili za Magari",
+    servicesSubtitle:
+      "Kuanzia mauzo hadi huduma, tunatoa suluhisho za kina za magari zilizoundwa kuzidi matarajio yako katika kila hatua ya safari yako.",
+    bestSelection: "Uteuzi Bora",
+    carSales: "Uuzaji wa Magari",
+    certifiedPreOwned: "Magari Yaliyothibitishwa Yametumika",
+    newVehicleSales: "Uuzaji wa Magari Mapya",
+    tradeInEvaluations: "Tathmini za Kubadilishana",
+    vehicleHistoryReports: "Ripoti za Historia ya Gari",
+    easyApproval: "Uidhinishaji Rahisi",
+    financingSolutions: "Suluhisho za Ufadhili",
+    competitiveInterestRates: "Viwango vya Riba Vinavyoshindana",
+    leaseOptions: "Chaguo za Kukodisha",
+    creditApplications: "Maombi ya Mkopo",
+    insurancePartnerships: "Ushirikiano wa Bima",
+    bestValue: "Thamani Bora",
+    tradeInProgram: "Mpango wa Kubadilishana Gari",
+    fairMarketValuations: "Tathmini za Soko la Haki",
+    instantAppraisals: "Tathmini za Haraka",
+    hassleFreeProcess: "Mchakato Usio na Usumbufu",
+    sameDayTransactions: "Miamala Siku Hiyo Hiyo",
+    expertCare: "Huduma ya Kitaalamu",
+    maintenanceRepairs: "Matengenezo na Marekebisho",
+    oemPartsFluids: "Sehemu Asilia za OEM na Vilainishi",
+    scheduledServices: "Huduma za Ratiba",
+    diagnosticsRepairs: "Utambuzi na Marekebisho",
+    detailingPackages: "Paketiti za Usafishaji wa Kina",
+    peaceOfMind: "Amani ya Akili",
+    warrantyProtection: "Dhamana na Ulinzi",
+    extendedWarranties: "Dhamana Zilizoongezwa",
+    roadsideAssistance: "Msaada wa Njia",
+    gapTireProtection: "Ulinzi wa GAP na Matairi",
+    claimsSupport: "Msaada wa Madai",
+    convenience: "Urahisi",
+    testDrives: "Majaribio ya Kuendesha",
+    flexibleScheduling: "Ratiba Inayonyumbulika",
+    homeOfficeVisits: "Ziara za Nyumbani/Ofisini",
+    multipleRoutes: "Njia Nyingi",
+    expertGuidance: "Mwongozo wa Kitaalamu",
+    // About
+    aboutGreenwayMotors: "Kuhusu Greenway Motors",
+    aboutSubtitle:
+      "Kwa zaidi ya miaka 20, Greenway Motors imekuwa kituo kinachoongoza kwa magari ya kifahari na ya daraja la juu — ikiweka kiwango cha ubora katika mauzo na huduma za magari.",
+    yearsInBusiness: "Miaka ya Biashara",
+    vehiclesSold: "Magari Yaliyouzwa",
+    ourStory: "Hadithi Yetu",
+    storyText1:
+      "Greenway Motors ilianzishwa mwaka 2005 ikiwa na maono ya kuleta mageuzi katika uzoefu wa kununua gari kupitia anasa, ubora na uaminifu. Kilichoanza kama juhudi ya kifamilia kimekua kuwa duka linalotambulika duniani likiwa na shughuli Japani, Pakistan, Afrika na UAE.",
+    storyText2:
+      "Tunahusika katika kusafirisha magari ya kifahari, na tunajivunia kuwaunganisha wateja duniani kote na magari bora. Tukiongozwa na uadilifu, kutegemewa na kuridhika kwa wateja, Greenway Motors inaendelea kuendeleza ubora katika soko la kimataifa la magari.",
+    ourMission: "Dhamira Yetu",
+    missionText:
+      "Katika Greenway Motors, dhamira yetu ni kufanya magari ya kifahari yaweze kufikiwa kupitia bei wazi na shindani huku tukihakikisha usafirishaji wa kimataifa usio na kikwazo. Tunajitahidi kujenga uhusiano wa kudumu na wateja wetu kwa kutoa kutegemewa bila kifani, huduma bora na kuridhika kamili katika kila hatua — kuanzia uteuzi hadi usafirishaji na zaidi.",
+    integrity: "Uadilifu",
+    integrityText: "Mwongozo wa uwazi na uadilifu — kila wakati.",
+    quality: "Ubora",
+    qualityText: "Magari yaliyothibitishwa, ukaguzi mkali, huduma ya OEM.",
+    service: "Huduma",
+    serviceText: "Huduma ya kibinafsi kabla na baada ya ununuzi.",
+    // Contact
+    getInTouch: "Wasiliana Nasi",
+    contactSubtitle:
+      "Uko tayari kupata gari lako kamili? Timu yetu iko hapa kukusaidia katika kila hatua.",
+    visitOurShowroom: "Tembelea Jumba letu la Maonyesho",
+    showroomAddress:
+      "Ras Al Khor Industrial Area 3, Ducumz Show Room No 94, Dubai, UAE",
+    showroomDescription:
+      "Jumba letu la kisasa linaonyesha mifano ya hivi karibuni.",
+    callUs: "Piga Simu",
+    phoneNumber: "+971 52 482 5533",
+    callUsDescription: "Zungumza moja kwa moja na wataalamu wetu wa magari.",
+    emailUs: "Tutumie Barua Pepe",
+    emailAddress: "sales@greenwaymotors.ae",
+    emailUsDescription: "Pata taarifa za kina kuhusu gari lolote.",
+    businessHours: "Saa za Kazi",
+    businessHoursTime: "Jumatatu - Jumamosi: 10am - 8pm",
+    businessHoursDescription: "Saa zilizoongezwa kwa urahisi wako.",
+    sendUsAMessage: "Tutumie Ujumbe",
+    fullName: "Jina kamili",
+    emailAddressPlaceholder: "Anwani ya barua pepe",
+    phoneOptional: "Simu (hiari)",
+    subject: "Mada",
+    yourMessage: "Ujumbe wako…",
+    sendMessage: "Tuma Ujumbe",
+    quickActions: "Vitendo vya Haraka",
+    getDirections: "Pata Maelekezo",
+    emailUsButton: "Tutumie Barua Pepe",
+    chatLaterText:
+      "Unapenda kuzungumza baadaye? Tuma ujumbe wako na timu yetu itakujibu ndani ya siku moja ya kazi.",
+  },
 };
 
 interface LanguageProviderProps {
@@ -383,7 +560,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
     const savedLanguage = localStorage.getItem(
       "preferred_language"
     ) as Language;
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "ar")) {
+    if (
+      savedLanguage &&
+      (savedLanguage === "en" ||
+        savedLanguage === "ar" ||
+        savedLanguage === "sw")
+    ) {
       setLanguageState(savedLanguage);
     } else if (savedLanguage) {
       // If saved language is not valid (e.g., "ur"), reset to English

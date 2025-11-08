@@ -26,6 +26,7 @@ export default function LanguageSelector() {
   const languages = [
     { code: "en" as const, label: "English", flag: "🇺🇸" },
     { code: "ar" as const, label: "العربية", flag: "🇸🇦" },
+    { code: "sw" as const, label: "Kiswahili", flag: "🇹🇿" },
   ];
 
   const currentLanguage = languages.find((lang) => lang.code === language);
