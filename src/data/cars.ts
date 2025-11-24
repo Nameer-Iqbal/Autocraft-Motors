@@ -61,7 +61,8 @@ export const cars: Car[] = [
     transmission: "Automatic",
     driveType: "RHD",
     features: ["5 Door", "7 Seat", "4WD", "46,338 KM", "4500 CC", "Grey Color"],
-    featured: false
+    featured: false,
+    soldOut: true
   },
   {
     id: "0004",
@@ -386,15 +387,14 @@ export const cars: Car[] = [
     model: "Patrol",
     year: 2022,
     price: 35200,
-    image: "/src/assets/Cars/Nissan_Patrol.jpg",
+    image: "/src/assets/Cars/NissanPatrol.jpg",
     type: "SUV",
     fuelType: "Petrol",
     transmission: "Automatic",
     driveType: "RHD",
     features: ["4 Door", "7 Seats", "3,943 KM", "5600 CC", "Blue Color", "4WD"],
     featured: false,
-    chasisNumber: "JN1TANY62A0168787",
-    soldOut: true
+    chasisNumber: "JN1TANY62A0168787"
   },
   {
     id: "0025",
@@ -410,7 +410,8 @@ export const cars: Car[] = [
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "25,115 KM", "2800 CC", "Green Color", "4WD"],
     featured: false,
-    chasisNumber: "MR0KA3CDX01288708"
+    chasisNumber: "MR0KA3CDX01288708",
+    soldOut: true
   },
   {
     id: "0026",
@@ -490,7 +491,8 @@ export const cars: Car[] = [
     driveType: "RHD",
     features: ["4 Door", "5 Seats", "21,100 KM", "2800 CC", "Silver Color", "4WD"],
     featured: false,
-    chasisNumber: "MR0KA3FS000216688"
+    chasisNumber: "MR0KA3FS000216688",
+    soldOut: true
   }
 ];
 
