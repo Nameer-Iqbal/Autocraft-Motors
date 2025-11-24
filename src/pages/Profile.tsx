@@ -15,7 +15,6 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import heroShowroom from "@/assets/hero-showroom.jpg";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -85,15 +84,7 @@ export default function Profile() {
   };
 
   return (
-    <section
-      className="min-h-screen flex items-center justify-center px-4 py-12 relative"
-      style={{
-        backgroundImage: `url(${heroShowroom})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <section className="min-h-screen flex items-center justify-center px-4 py-12 relative bg-white">
       {/* Back Button */}
       <div className="absolute top-8 left-8 z-10">
         <Button
@@ -106,20 +97,17 @@ export default function Profile() {
         </Button>
       </div>
 
-      {/* Blurred background overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-
       <div className="w-full max-w-2xl relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">My Profile</h1>
-          <p className="text-white/90">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Profile</h1>
+          <p className="text-gray-600">
             View and manage your account information
           </p>
         </div>
 
         {/* Profile Card */}
-        <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+        <Card className="border-0 shadow-2xl bg-white">
           <CardContent className="p-6">
             <div className="space-y-6">
               {/* Profile Info */}

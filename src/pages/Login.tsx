@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Mail, Lock, Loader2, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
-import heroShowroom from "@/assets/hero-showroom.jpg";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -85,15 +84,7 @@ export default function Login() {
   };
 
   return (
-    <section
-      className="min-h-screen flex items-center justify-center px-4 py-12 relative"
-      style={{
-        backgroundImage: `url(${heroShowroom})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <section className="min-h-screen flex items-center justify-center px-4 py-12 relative bg-white">
       {/* Back Button */}
       <div className="absolute top-8 left-8 z-10">
         <Button
@@ -107,20 +98,18 @@ export default function Login() {
           </Link>
         </Button>
       </div>
-      {/* Blurred background overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
 
       <div className="w-full max-w-md relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-          <p className="text-white/90">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+          <p className="text-gray-600">
             Sign in to your Autocraft Motors account
           </p>
         </div>
 
         {/* Login Form */}
-        <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
+        <Card className="border-0 shadow-2xl bg-white">
           <CardHeader className="space-y-1 pb-6">
             <CardTitle className="text-2xl font-bold text-center text-gray-900">
               Sign In
