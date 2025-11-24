@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         sans: ['Ubuntu', 'system-ui', 'sans-serif'],
         display: ['Exo 2', 'sans-serif'],
+        arabic: ['Cairo', 'Ubuntu', 'system-ui', 'sans-serif'],
+        'arabic-display': ['Tajawal', 'Exo 2', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

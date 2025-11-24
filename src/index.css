@@ -96,6 +96,22 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+
+  /* Arabic font support - matches English/Swahili styling */
+  [dir="rtl"] body,
+  [dir="rtl"] * {
+    font-family: 'Cairo', 'Ubuntu', system-ui, sans-serif;
+  }
+
+  [dir="rtl"] .font-display,
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6 {
+    font-family: 'Tajawal', 'Exo 2', sans-serif;
+  }
   
   /* Custom scrollbar */
   ::-webkit-scrollbar {
