@@ -31,6 +31,10 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Building2,
+  Layers,
+  Gauge,
+  ArrowUpDown,
 } from "lucide-react";
 
 export default function Inventory() {
@@ -158,27 +162,36 @@ export default function Inventory() {
         <div className="mb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <div className="relative group">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4 group-focus-within:text-emerald-600 transition-colors" />
               <Input
                 placeholder={t("searchCars")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-white border border-gray-200 text-gray-900
-                           placeholder:text-gray-400 focus-visible:ring-emerald-500
-                           focus-visible:border-emerald-500"
+                className="pl-10 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 text-gray-900
+                           placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-emerald-500/50
+                           focus-visible:border-emerald-500 shadow-sm hover:shadow-md transition-all duration-200
+                           hover:border-emerald-300"
               />
             </div>
 
             {/* Brand Filter */}
             <Select value={filterBrand} onValueChange={setFilterBrand}>
-              <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder={t("allBrands")} />
+              <SelectTrigger className="group bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 text-gray-900 
+                                       focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 
+                                       hover:border-emerald-300 hover:shadow-md transition-all duration-200 shadow-sm
+                                       h-11 px-4">
+                <div className="flex items-center gap-2">
+                  <Building2 className="h-4 w-4 text-emerald-600" />
+                  <SelectValue placeholder={t("allBrands")} />
+                </div>
               </SelectTrigger>
-              <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">{t("allBrands")}</SelectItem>
+              <SelectContent className="bg-white text-gray-900 border-2 border-gray-200 shadow-xl rounded-lg overflow-hidden">
+                <SelectItem value="all" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("allBrands")}
+                </SelectItem>
                 {brands.map((brand) => (
-                  <SelectItem key={brand} value={brand}>
+                  <SelectItem key={brand} value={brand} className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
                     {brand}
                   </SelectItem>
                 ))}
@@ -187,13 +200,21 @@ export default function Inventory() {
 
             {/* Type Filter */}
             <Select value={filterType} onValueChange={setFilterType}>
-              <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder={t("allTypes")} />
+              <SelectTrigger className="group bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 text-gray-900 
+                                       focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 
+                                       hover:border-emerald-300 hover:shadow-md transition-all duration-200 shadow-sm
+                                       h-11 px-4">
+                <div className="flex items-center gap-2">
+                  <Layers className="h-4 w-4 text-emerald-600" />
+                  <SelectValue placeholder={t("allTypes")} />
+                </div>
               </SelectTrigger>
-              <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">{t("allTypes")}</SelectItem>
+              <SelectContent className="bg-white text-gray-900 border-2 border-gray-200 shadow-xl rounded-lg overflow-hidden">
+                <SelectItem value="all" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("allTypes")}
+                </SelectItem>
                 {types.map((type) => (
-                  <SelectItem key={type} value={type}>
+                  <SelectItem key={type} value={type} className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
                     {type}
                   </SelectItem>
                 ))}
@@ -202,13 +223,21 @@ export default function Inventory() {
 
             {/* Drive Type Filter */}
             <Select value={filterDriveType} onValueChange={setFilterDriveType}>
-              <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder={t("allDriveTypes")} />
+              <SelectTrigger className="group bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 text-gray-900 
+                                       focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 
+                                       hover:border-emerald-300 hover:shadow-md transition-all duration-200 shadow-sm
+                                       h-11 px-4">
+                <div className="flex items-center gap-2">
+                  <Gauge className="h-4 w-4 text-emerald-600" />
+                  <SelectValue placeholder={t("allDriveTypes")} />
+                </div>
               </SelectTrigger>
-              <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="all">{t("allDriveTypes")}</SelectItem>
+              <SelectContent className="bg-white text-gray-900 border-2 border-gray-200 shadow-xl rounded-lg overflow-hidden">
+                <SelectItem value="all" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("allDriveTypes")}
+                </SelectItem>
                 {driveTypes.map((driveType) => (
-                  <SelectItem key={driveType} value={driveType}>
+                  <SelectItem key={driveType} value={driveType} className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
                     {driveType}
                   </SelectItem>
                 ))}
@@ -217,17 +246,31 @@ export default function Inventory() {
 
             {/* Sort */}
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="bg-white border border-gray-200 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500">
-                <SelectValue placeholder={t("sortBy")} />
+              <SelectTrigger className="group bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 text-gray-900 
+                                       focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 
+                                       hover:border-emerald-300 hover:shadow-md transition-all duration-200 shadow-sm
+                                       h-11 px-4">
+                <div className="flex items-center gap-2">
+                  <ArrowUpDown className="h-4 w-4 text-emerald-600" />
+                  <SelectValue placeholder={t("sortBy")} />
+                </div>
               </SelectTrigger>
-              <SelectContent className="bg-white text-gray-900 border border-gray-200">
-                <SelectItem value="name">{t("name")}</SelectItem>
-                <SelectItem value="price-low">{t("priceLowToHigh")}</SelectItem>
-                <SelectItem value="price-high">
+              <SelectContent className="bg-white text-gray-900 border-2 border-gray-200 shadow-xl rounded-lg overflow-hidden">
+                <SelectItem value="name" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("name")}
+                </SelectItem>
+                <SelectItem value="price-low" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("priceLowToHigh")}
+                </SelectItem>
+                <SelectItem value="price-high" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
                   {t("priceHighToLow")}
                 </SelectItem>
-                <SelectItem value="year">{t("year")}</SelectItem>
-                <SelectItem value="brand">{t("brand")}</SelectItem>
+                <SelectItem value="year" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("year")}
+                </SelectItem>
+                <SelectItem value="brand" className="hover:bg-emerald-50 focus:bg-emerald-50 hover:text-gray-900 focus:text-gray-900 text-gray-900 cursor-pointer py-2.5">
+                  {t("brand")}
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
