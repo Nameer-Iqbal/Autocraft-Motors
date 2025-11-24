@@ -81,6 +81,15 @@ export default function Inventory() {
     });
 
     filtered.sort((a, b) => {
+      // First, sort by availability: available cars first, sold out cars last
+      const aSoldOut = a.soldOut ?? false;
+      const bSoldOut = b.soldOut ?? false;
+      
+      if (aSoldOut !== bSoldOut) {
+        return aSoldOut ? 1 : -1; // Available (false) comes before sold out (true)
+      }
+      
+      // If both have the same availability status, apply the selected sort
       switch (sortBy) {
         case "price-low":
           return a.price - b.price;
